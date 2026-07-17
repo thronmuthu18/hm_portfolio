@@ -9,7 +9,7 @@ const API_BASE_URL = (
   window.location.hostname === ''           // file:// protocol (opened directly)
 )
   ? 'http://localhost:5000'
-  : 'https://developer-portfolio-backend-x89y.onrender.com'; // Replace with your Render URL for production
+  : 'https://sudalaimuthu-portfolio.onrender.com'; // Replace with your Render URL for production
 
 document.addEventListener('DOMContentLoaded', () => {
   initNavbar();

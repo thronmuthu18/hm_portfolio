@@ -10,7 +10,7 @@ const API_BASE = (
   window.location.hostname === ''
 )
   ? 'http://localhost:5000/api/v1/admin'
-  : 'https://developer-portfolio-backend-x89y.onrender.com/api/v1/admin';
+  : 'https://sudalaimuthu-portfolio.onrender.com/api/v1/admin';
 
 const api = {
   /**
