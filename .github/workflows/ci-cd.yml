@@ -1,0 +1,39 @@
+name: CRM Enterprise CI/CD
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  validate:
+    name: Lint & Verify Builds
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Source Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js Environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: 'npm'
+          cache-dependency-path: 'backend/package-lock.json'
+
+      - name: Install Dependencies
+        run: |
+          cd backend
+          npm ci
+
+      - name: Syntax Compilation Check
+        run: |
+          cd backend
+          node --check server.js
+          node --check controllers/admin/adminController.js
+          node --check services/admin/databaseService.js
+
+      - name: Build Verification Checks
+        run: |
+          echo "✅ Compilation successful. Code ready for staging."

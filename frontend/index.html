@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    // Configure default GA4 measurement tag (easily replaceable with active stream ID)
+    gtag('config', 'G-XXXXXXXXXX', { 'send_page_view': true });
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Primary SEO Meta Tags -->
+  <title>Sudalaimuthu A | Full Stack Web Developer & Freelancer</title>
+  <meta name="description" content="Sudalaimuthu A is a premium freelance Full Stack Web Developer building modern, fast, secure, and responsive websites for businesses, startups, and personal brands.">
+  <meta name="keywords" content="Full Stack Web Developer, Freelance Web Developer, Responsive Website Developer, Business Website Developer, Portfolio Website, Web Developer Freelancer, Sudalaimuthu A">
+  <meta name="author" content="Sudalaimuthu A">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#060911">
+  <link rel="canonical" href="https://sudalaimuthu.dev">
+
+  <!-- Favicon Configurations -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+
+  <!-- Open Graph Meta Tags (Facebook / LinkedIn) -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Sudalaimuthu A | Full Stack Web Developer & Freelancer">
+  <meta property="og:description" content="Building modern, fast, secure, and responsive websites for businesses, startups, and personal brands. Check out my portfolio.">
+  <meta property="og:url" content="https://sudalaimuthu.dev">
+  <meta property="og:site_name" content="Sudalaimuthu A Portfolio">
+  <meta property="og:image" content="https://sudalaimuthu.dev/assets/images/og-preview.webp">
+
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sudalaimuthu A | Full Stack Web Developer & Freelancer">
+  <meta name="twitter:description" content="Building modern, fast, secure, and responsive websites for businesses, startups, and personal brands. Check out my portfolio.">
+  <meta name="twitter:image" content="https://sudalaimuthu.dev/assets/images/og-preview.webp">
+
+  <!-- Google Fonts Connection -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+  
+  <!-- JSON-LD Structured Schema Markup (A11Y & SEO Compliant Array) -->
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "@id": "https://sudalaimuthu.dev/#person",
+      "name": "Sudalaimuthu A",
+      "jobTitle": "Full Stack Web Developer",
+      "url": "https://sudalaimuthu.dev",
+      "telephone": "+916382539787",
+      "email": "sudalaimuthusudalai754@gmail.com",
+      "image": "https://sudalaimuthu.dev/assets/images/photo.webp",
+      "sameAs": [
+        "https://github.com/thronmuthu18",
+        "https://www.linkedin.com/in/placeholder"
+      ]
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": "https://sudalaimuthu.dev/#website",
+      "url": "https://sudalaimuthu.dev",
+      "name": "Sudalaimuthu A Portfolio",
+      "description": "Building modern, fast, secure, and responsive websites for businesses, startups, and personal brands.",
+      "publisher": {
+        "@id": "https://sudalaimuthu.dev/#person"
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "@id": "https://sudalaimuthu.dev/#webpage",
+      "url": "https://sudalaimuthu.dev",
+      "name": "Sudalaimuthu A | Full Stack Web Developer & Freelancer",
+      "description": "Sudalaimuthu A is a premium freelance Full Stack Web Developer building modern, fast, secure, and responsive websites.",
+      "isPartOf": {
+        "@id": "https://sudalaimuthu.dev/#website"
+      },
+      "about": {
+        "@id": "https://sudalaimuthu.dev/#person"
+      }
+    }
+  ]
+  </script>
+</head>
+<body>
+
+  <!-- LOADING SCREEN -->
+  <div id="loading-screen" class="loading-screen">
+    <div class="loader-content">
+      <span class="logo">Sudalaimuthu A<span class="logo-dot"></span></span>
+      <div class="loader-bar-bg"><div class="loader-bar"></div></div>
+    </div>
+  </div>
+
+  <!-- SCROLL PROGRESS INDICATOR -->
+  <div id="scroll-progress" class="scroll-progress"></div>
+
+  <!-- Background Glow Accents -->
+  <div class="ambient-glow-1"></div>
+  <div class="ambient-glow-2"></div>
+
+  <!-- RESPONSIVE NAVBAR -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="#hero" class="logo" aria-label="Sudalaimuthu A Home">
+        Sudalaimuthu A
+        <span class="logo-dot"></span>
+      </a>
+      
+      <nav class="nav-links" aria-label="Desktop Navigation">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#services">Services</a>
+        <a href="#why-choose-me">Why Me</a>
+        <a href="#projects">Projects</a>
+        <a href="#resume">Resume</a>
+        <a href="#faq">FAQ</a>
+        <a href="#contact">Contact</a>
+        <a href="#contact" class="btn btn-primary" style="padding: var(--space-2) var(--space-6);">Hire Me</a>
+      </nav>
+
+      <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Toggle Mobile Menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <nav class="mobile-nav" id="mobile-nav-menu" aria-label="Mobile Navigation">
+    <a href="#about" class="mobile-link">About</a>
+    <a href="#skills" class="mobile-link">Skills</a>
+    <a href="#services" class="mobile-link">Services</a>
+    <a href="#why-choose-me" class="mobile-link">Why Me</a>
+    <a href="#projects" class="mobile-link">Projects</a>
+    <a href="#resume" class="mobile-link">Resume</a>
+    <a href="#faq" class="mobile-link">FAQ</a>
+    <a href="#contact" class="mobile-link">Contact</a>
+    <a href="#contact" class="btn btn-primary mobile-link">Hire Me</a>
+  </nav>
+
+  <main>
+    
+    <!-- HERO SECTION -->
+    <section id="hero" class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content reveal-fade-up">
+          <div class="hero-badge">
+            <span class="hero-badge-dot"></span>
+            Available for Freelance Projects
+          </div>
+          <h1>Building Modern, Fast & Responsive <span class="gradient-text">Websites</span></h1>
+          <p>Hi, I'm Sudalaimuthu A. I am a Full Stack Web Developer. I build secure, high-performance, and visually rich digital experiences that help startups and personal brands scale.</p>
+          <div class="hero-ctas">
+            <a href="#contact" class="btn btn-primary">Hire Me</a>
+            <a href="#projects" class="btn btn-secondary">View Projects</a>
+          </div>
+          <div style="margin-top: var(--space-6); display: flex; gap: var(--space-4); align-items: center;">
+            <a href="#" class="btn btn-secondary" style="padding: var(--space-2) var(--space-4); font-size: var(--fs-xs);" id="hero-resume-btn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              Resume (Placeholder)
+            </a>
+            <a href="https://github.com/thronmuthu18" target="_blank" rel="noopener" class="btn btn-secondary" style="padding: var(--space-2) var(--space-4); font-size: var(--fs-xs);" aria-label="GitHub Profile">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+        
+        <div class="hero-visual reveal-fade-in">
+          <div class="hero-card-glow"></div>
+          <div class="hero-mockup-card glass-card">
+            <div class="code-header">
+              <div class="code-dot"></div>
+              <div class="code-dot"></div>
+              <div class="code-dot"></div>
+            </div>
+            <p><span class="code-comment">// Technical Summary</span></p>
+            <p><span class="code-keyword">const</span> developer = {</p>
+            <p>&nbsp;&nbsp;name: <span class="code-string">"Sudalaimuthu A"</span>,</p>
+            <p>&nbsp;&nbsp;title: <span class="code-string">"Full Stack Web Developer"</span>,</p>
+            <p>&nbsp;&nbsp;stack: [<span class="code-string">"HTML5/CSS3/JS"</span>, <span class="code-string">"Node.js"</span>, <span class="code-string">"Express"</span>, <span class="code-string">"MongoDB"</span>],</p>
+            <p>&nbsp;&nbsp;standards: [<span class="code-string">"Clean Code"</span>, <span class="code-string">"SEO Optimized"</span>, <span class="code-string">"Secure Routes"</span>],</p>
+            <p>&nbsp;&nbsp;readyForHire: <span class="code-keyword">true</span></p>
+            <p>};</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT ME SECTION -->
+    <section id="about" class="section-padding">
+      <div class="container">
+        <div class="section-header">
+          <h2>About Me</h2>
+          <p>Who I am and what drives my development approach</p>
+        </div>
+        <div class="about-grid">
+          <div class="about-visual reveal-fade-in">
+            <div class="about-photo-frame glass-card">
+              <div class="about-photo-placeholder">
+                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <p style="font-size: var(--fs-xs); color: hsl(var(--text-muted));">Photo Placeholder</p>
+              </div>
+            </div>
+          </div>
+          <div class="about-content reveal-fade-up">
+            <h3>Architecting Scalable and Client-Ready Digital Environments</h3>
+            <div class="about-text">
+              <p>I am Sudalaimuthu A, a freelance Full Stack Web Developer focused on delivering professional web applications. My path in computer science and software development has instilled in me a deep commitment to writing clean, secure, and highly optimized code.</p>
+              <p>My development philosophy centres around building mobile-first, responsive layouts, enforcing strict security standards, and establishing fast loading times. Whether you are an emerging business, a personal brand, or a growing startup, my objective is to transform your vision into a premium digital asset.</p>
+              <p>I place a high priority on clear communication and timely updates throughout every project. Partnering with me means getting a custom-engineered web application built to modern production standards.</p>
+            </div>
+            <div class="about-stats">
+              <div class="stat-item glass-card glow-card-blue reveal-fade-up">
+                <div class="stat-num gradient-text" data-target="100">0%</div>
+                <div class="stat-lbl">Quality Commitment</div>
+              </div>
+              <div class="stat-item glass-card glow-card-purple reveal-fade-up">
+                <div class="stat-num gradient-text" data-target="10">0+</div>
+                <div class="stat-lbl">Core Services</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills" class="section-padding">
+      <div class="container">
+        <div class="section-header">
+          <h2>Technical Arsenal</h2>
+          <p>Technologies, libraries, and utilities I leverage to build software</p>
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr; gap: var(--space-8);">
+          <div class="skills-grid">
+            
+            <!-- Frontend Category -->
+            <div class="skills-category glass-card reveal-fade-up">
+              <h3>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                Frontend Architecture
+              </h3>
+              <div class="skill-list">
+                <div class="skill-item">
+                  <div class="skill-info">
+                    <span class="skill-name">HTML5 / CSS3</span>
+                    <span class="skill-percentage" data-val="95">0%</span>
+                  </div>
+                  <div class="skill-progress-bar">
+                    <div class="skill-progress" data-width="95" style="width: 0%;"></div>
+                  </div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-info">
+                    <span class="skill-name">JavaScript (Vanilla ES6+)</span>
+                    <span class="skill-percentage" data-val="90">0%</span>
+                  </div>
+                  <div class="skill-progress-bar">
+                    <div class="skill-progress" data-width="90" style="width: 0%;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Backend & Database Category -->
+            <div class="skills-category glass-card reveal-fade-up">
+              <h3>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+                Backend & Database
+              </h3>
+              <div class="skill-list">
+                <div class="skill-item">
+                  <div class="skill-info">
+                    <span class="skill-name">Node.js / Express.js</span>
+                    <span class="skill-percentage" data-val="85">0%</span>
+                  </div>
+                  <div class="skill-progress-bar">
+                    <div class="skill-progress" data-width="85" style="width: 0%;"></div>
+                  </div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-info">
+                    <span class="skill-name">MongoDB Atlas (Mongoose)</span>
+                    <span class="skill-percentage" data-val="80">0%</span>
+                  </div>
+                  <div class="skill-progress-bar">
+                    <div class="skill-progress" data-width="80" style="width: 0%;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Tools and Workflow Section -->
+          <div class="glass-card reveal-fade-up" style="padding: var(--space-6);">
+            <h3 style="font-size: var(--fs-md); font-weight: var(--font-weight-semibold); margin-bottom: var(--space-4); display: flex; align-items: center; gap: var(--space-3); border-bottom: 1px solid var(--glass-border); padding-bottom: var(--space-2);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+              Tools & Workflow
+            </h3>
+            <div style="display: flex; flex-wrap: wrap; gap: var(--space-3);">
+              <span class="project-tag" style="background: hsla(var(--color-primary) / 0.1); border-color: hsla(var(--color-primary) / 0.2); color: hsl(var(--text-primary));">Git</span>
+              <span class="project-tag" style="background: hsla(var(--color-primary) / 0.1); border-color: hsla(var(--color-primary) / 0.2); color: hsl(var(--text-primary));">GitHub</span>
+              <span class="project-tag" style="background: hsla(var(--color-primary) / 0.1); border-color: hsla(var(--color-primary) / 0.2); color: hsl(var(--text-primary));">VS Code</span>
+              <span class="project-tag" style="background: hsla(var(--color-primary) / 0.1); border-color: hsla(var(--color-primary) / 0.2); color: hsl(var(--text-primary));">Postman</span>
+              <span class="project-tag" style="background: hsla(var(--color-primary) / 0.1); border-color: hsla(var(--color-primary) / 0.2); color: hsl(var(--text-primary));">Netlify</span>
+              <span class="project-tag" style="background: hsla(var(--color-primary) / 0.1); border-color: hsla(var(--color-primary) / 0.2); color: hsl(var(--text-primary));">Render</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="section-padding">
+      <div class="container">
+        <div class="section-header">
+          <h2>Services</h2>
+          <p>Professional freelancing solutions tailored to align with business requirements</p>
+        </div>
+        <div class="services-grid">
+          
+          <div class="service-card glass-card glow-card-blue reveal-fade-up">
+            <div class="service-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+            </div>
+            <h3>Responsive Website Development</h3>
+            <p>Designing structures compatible with mobile phones, tablets, and wide screen monitors.</p>
+          </div>
+
+          <div class="service-card glass-card glow-card-purple reveal-fade-up">
+            <div class="service-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>
+            </div>
+            <h3>Landing Page Development</h3>
+            <p>Creating high-converting layouts targeting business leads and promotional campaigns.</p>
+          </div>
+
+          <div class="service-card glass-card glow-card-blue reveal-fade-up">
+            <div class="service-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+            </div>
+            <h3>Business Website Development</h3>
+            <p>Clean and content-rich websites built for business firms, local brands, and agencies.</p>
+          </div>
+
+          <div class="service-card glass-card glow-card-purple reveal-fade-up">
+            <div class="service-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+            </div>
+            <h3>Portfolio Website Development</h3>
+            <p>High-end interactive portfolios for professionals, freelancers, and creative artists.</p>
+          </div>
+
+          <div class="service-card glass-card glow-card-blue reveal-fade-up">
+            <div class="service-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"></path></svg>
+            </div>
+            <h3>Full Stack Web Development</h3>
+            <p>End-to-end architectures linking custom frontends with backend APIs and databases.</p>
+          </div>
+
+          <div class="service-card glass-card glow-card-purple reveal-fade-up">
+            <div class="service-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+            </div>
+            <h3>Frontend Web Development</h3>
+            <p>Translating user layouts into pixel-perfect, clean, interactive responsive screens.</p>
+          </div>
+
+          <div class="service-card glass-card glow-card-blue reveal-fade-up">
+            <div class="service-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path></svg>
+            </div>
+            <h3>Website Redesign</h3>
+            <p>Updating legacy websites into modern layouts featuring improved UX, speed, and design.</p>
+          </div>
+
+          <div class="service-card glass-card glow-card-purple reveal-fade-up">
+            <div class="service-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+            </div>
+            <h3>Website Maintenance & Support</h3>
+            <p>Ensuring system stability, framework updates, regular package patches, and health checks.</p>
+          </div>
+
+          <div class="service-card glass-card glow-card-blue reveal-fade-up">
+            <div class="service-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+            </div>
+            <h3>Bug Fixing & Troubleshooting</h3>
+            <p>Identifying runtime crashes, correcting script problems, and repairing visual errors.</p>
+          </div>
+
+          <div class="service-card glass-card glow-card-purple reveal-fade-up">
+            <div class="service-icon-box">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+            </div>
+            <h3>Basic SEO Optimization</h3>
+            <p>Inserting metadata fields, improving speed, and complying with indexing criteria.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY CHOOSE ME SECTION -->
+    <section id="why-choose-me" class="section-padding" style="background: hsla(var(--bg-card-dark) / 0.3); border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border);">
+      <div class="container">
+        <div class="section-header">
+          <h2>Why Choose Me</h2>
+          <p>Delivering high-value, production-grade assets focused on your brand's growth</p>
+        </div>
+        <div class="services-grid">
+          
+          <div class="service-card glass-card glow-card-blue reveal-fade-up" style="padding: var(--space-6);">
+            <div class="service-icon-box" style="background: hsla(var(--color-primary) / 0.1); color: hsl(var(--color-primary));">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+            </div>
+            <h4 style="font-size: var(--fs-md); font-weight: var(--font-weight-bold); margin-bottom: var(--space-2);">Modern & Responsive Design</h4>
+            <p style="font-size: var(--fs-sm); color: hsl(var(--text-secondary));">Mobile-first interface layout templates ensuring compatibility across mobile, tablet, and desktop screens.</p>
+          </div>
+
+          <div class="service-card glass-card glow-card-purple reveal-fade-up" style="padding: var(--space-6);">
+            <div class="service-icon-box" style="background: hsla(var(--color-secondary) / 0.1); color: hsl(var(--color-secondary));">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><code style="font-family: monospace; font-size: 16px; font-weight: bold;">&lt;/&gt;</code></svg>
+            </div>
+            <h4 style="font-size: var(--fs-md); font-weight: var(--font-weight-bold); margin-bottom: var(--space-2);">Clean & Maintainable Code</h4>
+            <p style="font-size: var(--fs-sm); color: hsl(var(--text-secondary));">Strict adherence to structural modular conventions, keeping backend APIs and styling rules easy to read.</p>
+          </div>
+
+          <div class="service-card glass-card glow-card-blue reveal-fade-up" style="padding: var(--space-6);">
+            <div class="service-icon-box" style="background: hsla(var(--color-primary) / 0.1); color: hsl(var(--color-primary));">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+            </div>
+            <h4 style="font-size: var(--fs-md); font-weight: var(--font-weight-bold); margin-bottom: var(--space-2);">Performance Optimized</h4>
+            <p style="font-size: var(--fs-sm); color: hsl(var(--text-secondary));">Lightweight setups, minimal file footprints, and optimized asset requests targeting high Lighthouse ratings.</p>
+          </div>
+
+          <div class="service-card glass-card glow-card-purple reveal-fade-up" style="padding: var(--space-6);">
+            <div class="service-icon-box" style="background: hsla(var(--color-secondary) / 0.1); color: hsl(var(--color-secondary));">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            </div>
+            <h4 style="font-size: var(--fs-md); font-weight: var(--font-weight-bold); margin-bottom: var(--space-2);">Secure Development</h4>
+            <p style="font-size: var(--fs-sm); color: hsl(var(--text-secondary));">Input cleaning, XSS escaping, rate limits, and NoSQL injection blockades standard on all route entries.</p>
+          </div>
+
+          <div class="service-card glass-card glow-card-blue reveal-fade-up" style="padding: var(--space-6);">
+            <div class="service-icon-box" style="background: hsla(var(--color-primary) / 0.1); color: hsl(var(--color-primary));">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+            </div>
+            <h4 style="font-size: var(--fs-md); font-weight: var(--font-weight-bold); margin-bottom: var(--space-2);">Clear Communication</h4>
+            <p style="font-size: var(--fs-sm); color: hsl(var(--text-secondary));">Timely updates, structured milestone checklists, and clear technical transparency at every stage.</p>
+          </div>
+
+          <div class="service-card glass-card glow-card-purple reveal-fade-up" style="padding: var(--space-6);">
+            <div class="service-icon-box" style="background: hsla(var(--color-secondary) / 0.1); color: hsl(var(--color-secondary));">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            </div>
+            <h4 style="font-size: var(--fs-md); font-weight: var(--font-weight-bold); margin-bottom: var(--space-2);">Client-Focused Solutions</h4>
+            <p style="font-size: var(--fs-sm); color: hsl(var(--text-secondary));">Tailoring software functionality directly to address your target audience and user conversion requirements.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED PROJECTS SECTION -->
+    <section id="projects" class="section-padding">
+      <div class="container">
+        <div class="section-header">
+          <h2>Featured Work</h2>
+          <p>Real-world projects developed for freelancers and businesses</p>
+        </div>
+        <div class="projects-grid">
+          
+          <!-- Project 1 (CB Builders) -->
+          <div class="project-card glass-card glow-card-blue reveal-fade-up">
+            <div class="project-visual">
+              <div class="project-visual-placeholder">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                <p style="font-size: var(--fs-xs); margin-top: var(--space-2);">CB Builders Showcase</p>
+              </div>
+              <span class="project-tag" style="position: absolute; top: var(--space-3); right: var(--space-3); font-size: 10px; background: hsla(var(--color-primary) / 0.2); color: hsl(var(--color-accent)); border-color: hsla(var(--color-accent) / 0.3);">Active Business Web</span>
+            </div>
+            <div class="project-content">
+              <div class="project-tags">
+                <span class="project-tag">HTML5</span>
+                <span class="project-tag">CSS3</span>
+                <span class="project-tag">Vanilla JS</span>
+                <span class="project-tag">Netlify</span>
+              </div>
+              <h3>CB Builders</h3>
+              <p>A professional construction and interior design business website displaying detailed projects, service portfolios, and custom consultation workflows.</p>
+              <div class="project-links">
+                <a href="https://github.com/thronmuthu18" target="_blank" rel="noopener" class="project-link" aria-label="CB Builders GitHub Repository">
+                  GitHub
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2 (Placeholder) -->
+          <div class="project-card glass-card glow-card-purple reveal-fade-up">
+            <div class="project-visual">
+              <div class="project-visual-placeholder">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
+                <p style="font-size: var(--fs-xs); margin-top: var(--space-2);">E-Commerce Showcase</p>
+              </div>
+              <span class="project-tag" style="position: absolute; top: var(--space-3); right: var(--space-3); font-size: 10px; background: hsla(var(--color-secondary) / 0.2); color: hsl(var(--color-secondary)); border-color: hsla(var(--color-secondary) / 0.3);">Coming Soon</span>
+            </div>
+            <div class="project-content">
+              <div class="project-tags">
+                <span class="project-tag">Node.js</span>
+                <span class="project-tag">Express</span>
+                <span class="project-tag">MongoDB</span>
+              </div>
+              <h3>Full Stack Storefront</h3>
+              <p>A secure e-commerce application platform featuring shopping cart setups, inventory queries, and customer order logging models.</p>
+              <div class="project-links">
+                <span style="color: hsl(var(--text-muted)); font-size: var(--fs-xs);">Placeholder Card</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3 (Placeholder) -->
+          <div class="project-card glass-card glow-card-blue reveal-fade-up">
+            <div class="project-visual">
+              <div class="project-visual-placeholder">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                <p style="font-size: var(--fs-xs); margin-top: var(--space-2);">Real Estate System</p>
+              </div>
+              <span class="project-tag" style="position: absolute; top: var(--space-3); right: var(--space-3); font-size: 10px; background: hsla(var(--color-primary) / 0.2); color: hsl(var(--color-accent)); border-color: hsla(var(--color-accent) / 0.3);">Coming Soon</span>
+            </div>
+            <div class="project-content">
+              <div class="project-tags">
+                <span class="project-tag">HTML5/CSS3</span>
+                <span class="project-tag">Vanilla JS</span>
+                <span class="project-tag">REST API</span>
+              </div>
+              <h3>Property Listing Portal</h3>
+              <p>A client listing interface configured to showcase home properties, filter budget brackets, and submit visit booking enquiries.</p>
+              <div class="project-links">
+                <span style="color: hsl(var(--text-muted)); font-size: var(--fs-xs);">Placeholder Card</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 4 (Placeholder) -->
+          <div class="project-card glass-card glow-card-purple reveal-fade-up">
+            <div class="project-visual">
+              <div class="project-visual-placeholder">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line><line x1="3" y1="9" x2="21" y2="9"></line></svg>
+                <p style="font-size: var(--fs-xs); margin-top: var(--space-2);">SaaS Console Panel</p>
+              </div>
+              <span class="project-tag" style="position: absolute; top: var(--space-3); right: var(--space-3); font-size: 10px; background: hsla(var(--color-secondary) / 0.2); color: hsl(var(--color-secondary)); border-color: hsla(var(--color-secondary) / 0.3);">Coming Soon</span>
+            </div>
+            <div class="project-content">
+              <div class="project-tags">
+                <span class="project-tag">Node.js</span>
+                <span class="project-tag">Express</span>
+                <span class="project-tag">MongoDB</span>
+              </div>
+              <h3>Analytics Dashboard</h3>
+              <p>A premium metrics panel illustrating client request traffic counts, browser viewport distributions, and form submission telemetry.</p>
+              <div class="project-links">
+                <span style="color: hsl(var(--text-muted)); font-size: var(--fs-xs);">Placeholder Card</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- RESUME SECTION -->
+    <section id="resume" class="section-padding">
+      <div class="container">
+        <div class="section-header">
+          <h2>Professional Credentials</h2>
+          <p>Download or inspect educational history and technical experience profiles</p>
+        </div>
+        
+        <div class="resume-preview-box glass-card reveal-fade-up">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin: 0 auto var(--space-4); color: hsl(var(--color-primary));"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          <h3>Sudalaimuthu A — CV</h3>
+          <p>Full Stack Web Developer | Specializing in Node.js, Express, MongoDB Atlas, and responsive frontends.</p>
+          <div class="resume-btn-group">
+            <a href="#" class="btn btn-primary" id="download-cv-btn-secondary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              Download Resume
+            </a>
+            <a href="#" class="btn btn-secondary" id="view-cv-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+              View Document
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section id="faq" class="section-padding" style="background: hsla(var(--bg-card-dark) / 0.3); border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border);">
+      <div class="container">
+        <div class="section-header">
+          <h2>Frequently Asked Questions</h2>
+          <p>Quick answers to common questions about services and workflows</p>
+        </div>
+        
+        <div class="faq-list">
+          
+          <details class="faq-item glass-card reveal-fade-up">
+            <summary>What services do you provide?</summary>
+            <p>I offer responsive website development, landing page creation, business websites, portfolio development, end-to-end full stack development, frontend translations, website redesigns, maintenance and support checks, troubleshooting bug fixes, and basic SEO configurations.</p>
+          </details>
+
+          <details class="faq-item glass-card reveal-fade-up">
+            <summary>Do you build responsive websites?</summary>
+            <p>Yes, all websites I build utilize fluid typography and container queries to adjust layout structures automatically on mobile, tablet, and wide screen monitor viewports.</p>
+          </details>
+
+          <details class="faq-item glass-card reveal-fade-up">
+            <summary>Which technologies do you use?</summary>
+            <p>I primarily work with Node.js, Express.js, MongoDB Atlas (Mongoose), HTML5, CSS3, and Vanilla JavaScript. For web applications hosting, I utilize GitHub, Netlify, and Render.</p>
+          </details>
+
+          <details class="faq-item glass-card reveal-fade-up">
+            <summary>How can clients contact you?</summary>
+            <p>You can send an email directly to sudalaimuthusudalai754@gmail.com, call me at +916382539787, or fill out the secure contact form below. I typically respond within 24 hours.</p>
+          </details>
+
+          <details class="faq-item glass-card reveal-fade-up">
+            <summary>How long does a typical project take?</summary>
+            <p>A standard landing page or simple business portfolio takes 1 to 2 weeks. Custom full stack web applications requiring database integrations and secure backend APIs typically require 3 to 4 weeks depending on the complexity of features requested.</p>
+          </details>
+
+          <details class="faq-item glass-card reveal-fade-up">
+            <summary>Do you provide website maintenance?</summary>
+            <p>Yes, I offer monthly maintenance agreements that cover package version updates, server uptime check monitoring, design tweaks, security patches, and troubleshooting bug fixes.</p>
+          </details>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="section-padding">
+      <div class="container">
+        <div class="section-header">
+          <h2>Get In Touch</h2>
+          <p>Have a project in mind or want to collaborate? Send a message</p>
+        </div>
+        <div class="contact-grid">
+          
+          <div class="contact-info reveal-fade-in">
+            
+            <div class="contact-info-card glass-card">
+              <div class="contact-info-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+              </div>
+              <div class="contact-info-text">
+                <h4>Email Me</h4>
+                <p><a href="mailto:sudalaimuthusudalai754@gmail.com">sudalaimuthusudalai754@gmail.com</a></p>
+              </div>
+            </div>
+
+            <div class="contact-info-card glass-card">
+              <div class="contact-info-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+              </div>
+              <div class="contact-info-text">
+                <h4>Call Me</h4>
+                <p><a href="tel:6382539787">6382539787</a></p>
+              </div>
+            </div>
+
+            <div class="contact-info-card glass-card">
+              <div class="contact-info-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+              </div>
+              <div class="contact-info-text">
+                <h4>Location</h4>
+                <p>Tamil Nadu, India (Placeholder)</p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Contact Form -->
+          <div class="contact-form-box glass-card glow-card-purple reveal-fade-up">
+            <form id="contact-form" novalidate>
+              <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" class="form-control" placeholder="John Doe" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" class="form-control" placeholder="john@example.com" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" class="form-control" placeholder="+91 6382539787" required>
+              </div>
+              <div class="form-group">
+                <label for="projectType">Project Type</label>
+                <select id="projectType" name="projectType" class="form-control" style="background: hsla(var(--bg-base-dark) / 0.8); cursor: pointer;" required>
+                  <option value="" disabled selected>Select a service...</option>
+                  <option value="Responsive Website Development">Responsive Website Development</option>
+                  <option value="Landing Page Development">Landing Page Development</option>
+                  <option value="Business Website Development">Business Website Development</option>
+                  <option value="Portfolio Website Development">Portfolio Website Development</option>
+                  <option value="Full Stack Web Development">Full Stack Web Development</option>
+                  <option value="Frontend Web Development">Frontend Web Development</option>
+                  <option value="Website Redesign">Website Redesign</option>
+                  <option value="Website Maintenance & Support">Website Maintenance & Support</option>
+                  <option value="Bug Fixing & Troubleshooting">Bug Fixing & Troubleshooting</option>
+                  <option value="Basic SEO Optimization">Basic SEO Optimization</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="budget">Project Budget</label>
+                <select id="budget" name="budget" class="form-control" style="background: hsla(var(--bg-base-dark) / 0.8); cursor: pointer;" required>
+                  <option value="" disabled selected>Select a budget bracket...</option>
+                  <option value="Under $500">Under $500</option>
+                  <option value="$500 - $1,000">$500 - $1,000</option>
+                  <option value="$1,000 - $3,000">$1,000 - $3,000</option>
+                  <option value="$3,000 - $5,000">$3,000 - $5,000</option>
+                  <option value="$5,000+">$5,000+</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="message">Project Description</label>
+                <textarea id="message" name="message" class="form-control" placeholder="Explain your project details, features, and timeline..." required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+              
+              <div id="form-status-msg" class="form-status"></div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- PROFESSIONAL FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>Sudalaimuthu A</h3>
+          <p>High-end full stack web applications structured with clean code, modern glass aesthetics, and strict security compliance.</p>
+        </div>
+        <div class="footer-links-group">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#projects">Projects</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-group">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2026 Sudalaimuthu A. All rights reserved.</p>
+        <div class="footer-socials">
+          <a href="https://github.com/thronmuthu18" target="_blank" rel="noopener" aria-label="GitHub">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+          </a>
+          <a href="#" aria-label="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+          </a>
+          <a href="#" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Sticky Back-to-Top Button -->
+      <div class="back-to-top-container">
+        <a href="#hero" class="back-to-top" aria-label="Back to Top">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+          Back to Top
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Main JavaScript File -->
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+[2026-06-29T19:25:55.854Z] [INFO] [AUTHFAILURE] Failed login attempt for: wrong from IP: ::1
+[2026-06-29T19:28:56.873Z] [INFO] [AUTHFAILURE] Failed login attempt for: wrong from IP: ::1
+[2026-06-29T19:30:54.792Z] [INFO] [AUTHFAILURE] Failed login attempt for: wrong from IP: ::1
+[2026-06-29T19:36:55.523Z] [INFO] [AUTHFAILURE] Failed login attempt for: wrong from IP: ::1
+[2026-06-29T19:37:09.735Z] [INFO] [BRUTEFORCE] Blocked login attempt for: wrong from IP: ::1. Locked for another 5 mins.
+[2026-06-29T19:39:46.153Z] [INFO] [AUTHFAILURE] Failed login attempt for: unauthorized from IP: ::1
+[2026-06-29T19:40:07.839Z] [INFO] [AUTHFAILURE] Failed login attempt for: unauthorized from IP: ::1
+[2026-07-17T11:11:33.257Z] [INFO] [AUTHFAILURE] Failed login attempt for: unauthorized from IP: ::1
+[2026-07-17T11:43:21.513Z] [INFO] [AUTHFAILURE] Failed login attempt for: unauthorized from IP: ::1

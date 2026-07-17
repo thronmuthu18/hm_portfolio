@@ -1,0 +1,20 @@
+# Local Node modules
+**/node_modules
+**/npm-debug.log
+
+# Local Environment parameters
+**/.env
+**/.env.*
+
+# Logs and database archive dumps
+backend/logs/*.log
+backend/backups/*.json
+
+# Git structures
+.git
+.github
+.gitignore
+README.md
+task.md
+walkthrough.md
+implementation_plan.md

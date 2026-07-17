@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Admin Login — Sudalaimuthu Portfolio</title>
+  <link rel="stylesheet" href="./css/admin.css" />
+</head>
+<body>
+  <!-- Ambient background -->
+  <div class="ambient"></div>
+
+  <!-- Login Page -->
+  <main class="login-page" id="loginPage">
+    <div class="login-card">
+      <!-- Logo -->
+      <div class="login-logo">
+        <div class="login-logo-icon">⚡</div>
+        <h1>Admin<span>Panel</span></h1>
+      </div>
+
+      <!-- Title -->
+      <div class="login-title">
+        <h2>Welcome back</h2>
+        <p>Sign in to manage your portfolio contacts</p>
+      </div>
+
+      <!-- Form -->
+      <form id="loginForm" novalidate>
+        <div class="form-group">
+          <label class="form-label" for="username">Username</label>
+          <input
+            id="username"
+            type="text"
+            class="form-input"
+            placeholder="Enter your username"
+            autocomplete="username"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="password">Password</label>
+          <input
+            id="password"
+            type="password"
+            class="form-input"
+            placeholder="Enter your password"
+            autocomplete="current-password"
+            required
+          />
+        </div>
+        <div class="form-group" style="display:flex;align-items:center;gap:8px;margin-top:12px;margin-bottom:16px">
+          <input type="checkbox" id="rememberMe" style="width:auto;margin:0" />
+          <label class="form-label" for="rememberMe" style="margin-bottom:0;cursor:pointer;user-select:none">Remember Me</label>
+        </div>
+
+        <div class="login-error" id="loginError" role="alert"></div>
+
+        <button type="submit" class="btn-login" id="loginBtn">
+          Sign In
+        </button>
+      </form>
+    </div>
+  </main>
+
+  <script>
+    const API = 'http://localhost:5000/api';
+
+    // If already logged in (cookie OR localStorage token), redirect to dashboard
+    (async () => {
+      const token = localStorage.getItem('admin_token');
+      try {
+        const headers = { 'Content-Type': 'application/json' };
+        if (token) headers['Authorization'] = `Bearer ${token}`;
+        const res = await fetch(`${API}/v1/admin/profile`, {
+          credentials: 'include', headers
+        });
+        if (res.ok) window.location.href = './dashboard.html';
+        else localStorage.removeItem('admin_token');
+      } catch (_) { localStorage.removeItem('admin_token'); }
+    })();
+
+    const form = document.getElementById('loginForm');
+    const btn = document.getElementById('loginBtn');
+    const errorEl = document.getElementById('loginError');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value;
+
+      if (!username || !password) {
+        showError('Please enter both username and password.');
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'Signing in…';
+      hideError();
+
+      try {
+        const rememberMe = document.getElementById('rememberMe').checked;
+        const res = await fetch(`${API}/v1/admin/login`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'include',
+          body: JSON.stringify({ username, password, rememberMe })
+        });
+
+        const data = await res.json();
+
+        if (res.ok && data.success) {
+          // Store token in localStorage for file:// protocol fallback
+          if (data.token) localStorage.setItem('admin_token', data.token);
+          btn.textContent = '✓ Redirecting…';
+          window.location.href = './dashboard.html';
+        } else {
+          showError(data.message || 'Invalid credentials. Please try again.');
+          btn.disabled = false;
+          btn.textContent = 'Sign In';
+        }
+      } catch (err) {
+        showError('Connection error. Is the backend server running on port 5000?');
+        btn.disabled = false;
+        btn.textContent = 'Sign In';
+      }
+    });
+
+    function showError(msg) {
+      errorEl.textContent = msg;
+      errorEl.classList.add('show');
+    }
+    function hideError() {
+      errorEl.classList.remove('show');
+    }
+  </script>
+</body>
+</html>
