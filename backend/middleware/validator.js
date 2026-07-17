@@ -1,4 +1,5 @@
 const { body, validationResult } = require('express-validator');
+const logger = require('../utils/logger');
 
 /**
  * Validation rules list for Contact Enquiry request payload
@@ -68,7 +69,7 @@ exports.validate = (req, res, next) => {
   const extractedErrors = [];
   errors.array().forEach(err => extractedErrors.push({ field: err.path, message: err.msg }));
 
-  console.warn(`[${new Date().toISOString()}] Validation failed for request to POST /api/v1/contact. Errors count: ${extractedErrors.length}`);
+  logger.api('Validator', `Validation failed for ${req.method} ${req.path} — ${extractedErrors.length} error(s)`);
   
   return res.status(400).json({
     success: false,

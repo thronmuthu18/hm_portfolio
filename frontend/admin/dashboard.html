@@ -5,10 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex, nofollow" />
   <title>CRM Enterprise Workspace — Sudalaimuthu Portfolio</title>
+  <!-- Preconnect for faster Google Fonts DNS resolution -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- Outfit font — non-blocking via HTML link instead of CSS @import -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" />
   <link rel="stylesheet" href="./css/admin.css" />
-  <!-- Chart.js -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+  <!-- Chart.js — defer prevents blocking HTML parser -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js" defer></script>
+  <!-- PWA Manifest link -->
+  <link rel="manifest" href="/manifest.json" />
 </head>
+
 <body>
 
 <!-- Ambient background -->

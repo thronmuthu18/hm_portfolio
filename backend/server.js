@@ -46,8 +46,9 @@ const app = express();
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 } else {
-  // Production format logging for security audit compliance
-  app.use(morgan('combined'));
+  // Production: 'short' format — compact, avoids logging full URL query strings
+  // that may inadvertently include query tokens or sensitive path parameters
+  app.use(morgan('short'));
 }
 
 // 2. GLOBAL SECURITY HEADERS (HELMET WITH CUSTOM CSP FOR DEV/PROD)
@@ -70,12 +71,14 @@ app.use(helmet({
   }
 }));
 
-// Obscure server footprint & establish response headers
+// Obscure server footprint & establish hardened response headers
 app.disable('x-powered-by');
 app.use((req, res, next) => {
   res.setHeader('X-Content-Type-Options', 'nosniff');
   res.setHeader('X-Frame-Options', 'DENY');
   res.setHeader('X-XSS-Protection', '1; mode=block');
+  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+  res.setHeader('Permissions-Policy', 'geolocation=(), microphone=(), camera=(), payment=(), usb=()');
   next();
 });
 
@@ -101,8 +104,13 @@ if (process.env.CLIENT_URL) {
 
 app.use(cors({
   origin: (origin, callback) => {
-    // Allow requests with no origin: mobile apps, curl, local file:// pages (Origin: null), Postman
-    if (!origin || origin === 'null') return callback(null, true);
+    // In development, allow requests with no origin (curl, Postman, file:// pages)
+    // In production, require explicit trusted origin
+    if (!origin || origin === 'null') {
+      if (process.env.NODE_ENV !== 'production') return callback(null, true);
+      // Production: block null-origin requests to prevent CSRF from sandboxed iframes
+      return callback(new ApiError('Blocked by CORS policy: Origin header required in production.', 403));
+    }
     
     if (allowedOrigins.includes(origin)) {
       callback(null, true);

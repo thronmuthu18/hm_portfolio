@@ -25,6 +25,8 @@ const state = {
 const dashboard = {
   notificationAudio: null,
   lastUnreadCount: 0,
+  _analyticsLoadedAt: 0, // Timestamp of last successful analytics.load() call
+  _ANALYTICS_DEBOUNCE_MS: 30 * 1000, // Don't re-fetch analytics more frequently than every 30s
 
   /**
    * Run auth check and bootstrap UI
@@ -232,7 +234,11 @@ const dashboard = {
 
     // Load data specific to tab page
     if (page === 'dashboard') {
-      analytics.load();
+      // Deduplicate: analytics already loaded within the last 30s — skip re-fetch
+      const now = Date.now();
+      if (now - dashboard._analyticsLoadedAt > dashboard._ANALYTICS_DEBOUNCE_MS) {
+        analytics.load().then(() => { dashboard._analyticsLoadedAt = Date.now(); });
+      }
     } else if (page === 'messages') {
       messages.load();
     } else if (page === 'kanban') {
@@ -240,7 +246,11 @@ const dashboard = {
     } else if (page === 'calendar') {
       calendar.load();
     } else if (page === 'analytics') {
-      analytics.load();
+      // Deduplicate: reuse cached render if loaded recently
+      const now = Date.now();
+      if (now - dashboard._analyticsLoadedAt > dashboard._ANALYTICS_DEBOUNCE_MS) {
+        analytics.load().then(() => { dashboard._analyticsLoadedAt = Date.now(); });
+      }
     } else if (page === 'settings') {
       settings.load();
     }
@@ -263,7 +273,7 @@ const dashboard = {
 
   // ── SOUND & BROWSER ALERTS ──────────────────────────────────────────────────
   startLiveUpdates: () => {
-    // Check every 30 seconds
+    // Poll every 30 seconds to detect new unread messages
     setInterval(async () => {
       try {
         const res = await api.fetch('/analytics');
@@ -275,7 +285,10 @@ const dashboard = {
           if (newUnread > dashboard.lastUnreadCount) {
             dashboard.playNotificationSound();
             dashboard.triggerBrowserNotification();
-            dashboard.navigateTo(state.currentPage);
+            // Update the unread badge without triggering a full page re-render
+            analytics.updateDashboardStats(json.data.stats);
+            // Invalidate analytics cache so next manual tab switch re-loads fresh data
+            dashboard._analyticsLoadedAt = 0;
           }
           dashboard.lastUnreadCount = newUnread;
         }

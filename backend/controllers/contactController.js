@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Contact = require('../models/Contact');
 const emailService = require('../services/emailService');
 const ApiError = require('../utils/apiError');
+const logger = require('../utils/logger');
 
 /**
  * Submit Contact Enquiry Request
@@ -15,12 +16,12 @@ exports.submitContact = async (req, res, next) => {
     const unexpectedKeys = bodyKeys.filter(key => !allowedKeys.includes(key));
     
     if (unexpectedKeys.length > 0) {
-      console.warn(`[${new Date().toISOString()}] Warning: Blocked payload with unexpected fields: ${unexpectedKeys.join(', ')}`);
+      logger.api('ContactController', `Blocked payload with unexpected fields: ${unexpectedKeys.join(', ')} from ${req.ip}`);
       return next(new ApiError(`Unexpected parameters rejected: ${unexpectedKeys.join(', ')}`, 400));
     }
 
     const { fullName, email, phone, projectType, budget, projectDescription } = req.body;
-    console.log(`[${new Date().toISOString()}] Process: Creating database enquiry for: ${fullName} (${email})`);
+    logger.api('ContactController', `Processing new enquiry submission from ${req.ip || 'unknown'}`);
 
     let newEnquiryId;
     let submittedAt;
@@ -37,7 +38,7 @@ exports.submitContact = async (req, res, next) => {
       });
       newEnquiryId = newEnquiry._id;
       submittedAt = newEnquiry.createdAt;
-      console.log(`DATABASE SUCCESS: Enquiry saved to MongoDB. ID: ${newEnquiryId}`);
+      logger.database('ContactController', `Enquiry saved to MongoDB. ID: ${newEnquiryId}`);
     } else {
       newEnquiryId = new mongoose.Types.ObjectId();
       submittedAt = new Date();
@@ -73,7 +74,7 @@ exports.submitContact = async (req, res, next) => {
     });
 
   } catch (error) {
-    console.error('DATABASE ERROR: Failed to save enquiry to MongoDB:', error.message);
+    logger.server('ContactController', 'Failed to save enquiry to MongoDB', { error: error.message });
     return next(new ApiError('Failed to record inquiry in database.', 500));
   }
 };

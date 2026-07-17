@@ -32,7 +32,11 @@ const analytics = {
       analytics.renderActivityTimeline(data.recentActivity);
 
     } catch (err) {
-      console.error('Failed to load analytics rendering:', err);
+      // Use console.warn so the browser devtools don't show a noisy red error
+      // but we still get visibility during debugging
+      if (typeof console !== 'undefined' && window.location.hostname === 'localhost') {
+        console.warn('[Analytics] Failed to load analytics data:', err.message);
+      }
     }
   },
 

@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 
 // Models
 const Contact = require('../../models/Contact');
-const ContactCrmMeta = require('../..//models/admin/ContactCrmMeta');
+const ContactCrmMeta = require('../../models/admin/ContactCrmMeta');
 const logger = require('../../utils/logger');
 
 const backupDir = path.join(__dirname, '../../backups');
@@ -24,13 +24,23 @@ const databaseService = {
       await Contact.collection.createIndex({ phone: 1 });
       await Contact.collection.createIndex({ createdAt: -1 });
 
-      // 2. CRM Metadata indexes
+      // 2. CRM Metadata single-field indexes
       await ContactCrmMeta.collection.createIndex({ contactId: 1 });
       await ContactCrmMeta.collection.createIndex({ status: 1 });
       await ContactCrmMeta.collection.createIndex({ starred: 1 });
       await ContactCrmMeta.collection.createIndex({ isArchived: 1 });
       await ContactCrmMeta.collection.createIndex({ isDeleted: 1 });
       await ContactCrmMeta.collection.createIndex({ followUpDate: 1 });
+
+      // 3. Compound indexes for high-frequency aggregation queries (getMessages + analytics)
+      // contactId + isDeleted — used by every $lookup + $match combination
+      await ContactCrmMeta.collection.createIndex({ contactId: 1, isDeleted: 1 });
+      // status + isDeleted — used by filter queries and status count aggregations
+      await ContactCrmMeta.collection.createIndex({ status: 1, isDeleted: 1 });
+      // starred + isDeleted — used by starred filter
+      await ContactCrmMeta.collection.createIndex({ starred: 1, isDeleted: 1 });
+      // isArchived + isDeleted — used by archive filter
+      await ContactCrmMeta.collection.createIndex({ isArchived: 1, isDeleted: 1 });
 
       logger.activity('DatabaseService', 'Database indexes verified and generated successfully.');
     } catch (err) {

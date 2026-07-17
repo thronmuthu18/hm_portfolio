@@ -5,7 +5,7 @@ const os = require('os');
 const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
-const nodemailer = require('nodemailer');
+
 
 // Models
 const Contact = require('../../models/Contact');
@@ -20,6 +20,7 @@ const visitorService = require('../../services/admin/visitorService');
 const activityService = require('../../services/admin/activityService');
 const analyticsService = require('../../services/admin/analyticsService');
 const reportService = require('../../services/admin/reportService');
+const emailService = require('../../services/emailService');
 const logger = require('../../utils/logger');
 
 // Lockout configurations
@@ -93,10 +94,19 @@ const adminController = {
 
       let passwordMatch = false;
       if (username === adminUsername) {
-        if (adminPasswordHash.startsWith('$2')) {
+        if (adminPasswordHash && adminPasswordHash.startsWith('$2')) {
+          // bcrypt hash — use bcrypt.compare (timing-safe by design)
           passwordMatch = await bcrypt.compare(password, adminPasswordHash);
-        } else {
-          passwordMatch = (password === adminPasswordHash);
+        } else if (adminPasswordHash) {
+          // Plain-text fallback: use constant-time comparison to prevent timing attacks
+          const aLen = Buffer.byteLength(adminPasswordHash);
+          const bLen = Buffer.byteLength(password);
+          if (aLen === bLen) {
+            passwordMatch = crypto.timingSafeEqual(
+              Buffer.from(adminPasswordHash),
+              Buffer.from(password)
+            );
+          }
         }
       }
 
@@ -149,19 +159,19 @@ const adminController = {
         await AdminLockout.deleteOne({ ip, username });
       }
 
-      // Generate Access Token (15 mins)
+      // Generate Access Token (15 mins) — HS256 algorithm explicitly enforced
       const token = jwt.sign(
         { username, role: 'admin' },
         process.env.JWT_SECRET,
-        { expiresIn: '15m' }
+        { expiresIn: '15m', algorithm: 'HS256' }
       );
 
-      // Generate Refresh Token (7 days)
+      // Generate Refresh Token (7 days) — HS256 algorithm explicitly enforced
       const familyId = crypto.randomUUID();
       const refreshToken = jwt.sign(
         { username, role: 'admin', familyId },
         process.env.JWT_SECRET,
-        { expiresIn: '7d' }
+        { expiresIn: '7d', algorithm: 'HS256' }
       );
 
       const tokenHash = crypto.createHash('sha256').update(refreshToken).digest('hex');
@@ -293,17 +303,17 @@ const adminController = {
       activeSession.rotated = true;
       await activeSession.save();
 
-      // Rotate Refresh Token
+      // Rotate Refresh Token — HS256 algorithm explicitly enforced
       const newRefreshToken = jwt.sign(
         { username: decoded.username, role: 'admin', familyId: activeSession.familyId },
         process.env.JWT_SECRET,
-        { expiresIn: '7d' }
+        { expiresIn: '7d', algorithm: 'HS256' }
       );
 
       const newAccessToken = jwt.sign(
         { username: decoded.username, role: 'admin' },
         process.env.JWT_SECRET,
-        { expiresIn: '15m' }
+        { expiresIn: '15m', algorithm: 'HS256' }
       );
 
       const newHash = crypto.createHash('sha256').update(newRefreshToken).digest('hex');
@@ -421,18 +431,31 @@ const adminController = {
       return res.status(400).json({ success: false, message: 'Current and new password are required.' });
     }
 
-    if (newPassword.length < 8) {
-      return res.status(400).json({ success: false, message: 'New password must be at least 8 characters.' });
+    // Enforce strong password policy: min 8 chars, uppercase, digit, special character
+    const strongPasswordRegex = /^(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{8,}$/;
+    if (!strongPasswordRegex.test(newPassword)) {
+      return res.status(400).json({
+        success: false,
+        message: 'Password must be at least 8 characters and include an uppercase letter, a number, and a special character.'
+      });
     }
 
     try {
       const adminPasswordHash = process.env.ADMIN_PASSWORD;
       let passwordMatch = false;
 
-      if (adminPasswordHash.startsWith('$2')) {
+      if (adminPasswordHash && adminPasswordHash.startsWith('$2')) {
         passwordMatch = await bcrypt.compare(currentPassword, adminPasswordHash);
-      } else {
-        passwordMatch = (currentPassword === adminPasswordHash);
+      } else if (adminPasswordHash) {
+        // Timing-safe comparison to prevent timing attacks on plaintext passwords
+        const aLen = Buffer.byteLength(adminPasswordHash);
+        const bLen = Buffer.byteLength(currentPassword);
+        if (aLen === bLen) {
+          passwordMatch = crypto.timingSafeEqual(
+            Buffer.from(adminPasswordHash),
+            Buffer.from(currentPassword)
+          );
+        }
       }
 
       if (!passwordMatch) {
@@ -440,15 +463,17 @@ const adminController = {
       }
 
       const newHash = await bcrypt.hash(newPassword, 12);
+      // Update in-memory env; note: to persist across restarts, update ADMIN_PASSWORD in your deployment environment
       process.env.ADMIN_PASSWORD = newHash;
 
       await activityService.log(req.admin.username, 'PASSWORD_CHANGE', null, 'Admin security password changed.', req);
 
       res.status(200).json({
         success: true,
-        message: 'Password changed successfully.'
+        message: 'Password changed successfully. Update your deployment environment variable ADMIN_PASSWORD to persist this change across restarts.'
       });
     } catch (err) {
+      logger.server('AdminController', 'Password change failed', err);
       res.status(500).json({ success: false, message: 'Failed to change admin password.' });
     }
   },
@@ -574,6 +599,33 @@ const adminController = {
         },
         { $unwind: '$crm' },
         { $match: crmMetaQuery },
+        // Project only table-view fields — strip embedded arrays (notes, tasks, attachments)
+        // that are only needed in the detail drawer view. Dramatically reduces payload size.
+        {
+          $project: {
+            fullName: 1,
+            email: 1,
+            phone: 1,
+            projectType: 1,
+            budget: 1,
+            projectDescription: 1,
+            createdAt: 1,
+            updatedAt: 1,
+            'crm._id': 1,
+            'crm.contactId': 1,
+            'crm.status': 1,
+            'crm.starred': 1,
+            'crm.isArchived': 1,
+            'crm.isDeleted': 1,
+            'crm.followUpDate': 1,
+            'crm.followUpNote': 1,
+            'crm.priority': 1,
+            'crm.tags': 1,
+            'crm.visitor': 1,
+            'crm.crmScore': 1,
+            'crm.updatedAt': 1
+          }
+        },
         {
           $sort: sort === 'oldest' ? { createdAt: 1 } :
                 sort === 'alphabetical' ? { fullName: 1 } :
@@ -857,25 +909,12 @@ const adminController = {
       const meta = await ContactCrmMeta.findOne({ contactId });
       if (!contact || !meta) return res.status(404).json({ success: false, message: 'Client profile not found.' });
 
-      // Configure SMTP transport connection
-      const transporter = nodemailer.createTransport({
-        host: process.env.SMTP_HOST || 'smtp.gmail.com',
-        port: parseInt(process.env.SMTP_PORT || '587'),
-        secure: parseInt(process.env.SMTP_PORT || '587') === 465,
-        auth: {
-          user: process.env.EMAIL_USER,
-          pass: process.env.EMAIL_PASS
-        }
-      });
-
-      const mailOptions = {
-        from: `"Developer CRM" <${process.env.EMAIL_USER}>`,
+      // Delegate direct dispatching task to emailService
+      await emailService.sendDirectEmail({
         to: contact.email,
         subject,
-        text: body
-      };
-
-      await transporter.sendMail(mailOptions);
+        body
+      });
 
       // Log to client email history
       meta.emailHistory.push({

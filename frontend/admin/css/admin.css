@@ -3,7 +3,7 @@
    Completely isolated from portfolio styles
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
 
 /* ── TOKENS & DYNAMIC THEMES ─────────────────────────────── */
 :root {
@@ -199,6 +199,7 @@ img { max-width: 100%; display: block; }
   position: fixed; top: 0; left: 0; bottom: 0;
   z-index: 100;
   transition: transform 0.3s ease;
+  will-change: transform; /* GPU compositor layer for smooth slide animation */
 }
 .sidebar-header {
   padding: 24px 20px;
@@ -344,6 +345,9 @@ img { max-width: 100%; display: block; }
 
 /* ── PAGE CONTENT ───────────────────────────────────────── */
 .page-content { flex: 1; padding: 28px; }
+
+/* Off-screen page sections skip rendering until visible — improves initial paint */
+.page-section { content-visibility: auto; contain-intrinsic-size: 0 600px; }
 
 /* ─────────────────────────────────────────────
    STAT CARDS
@@ -787,6 +791,8 @@ img { max-width: 100%; display: block; }
   transform: translateX(100%);
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   backdrop-filter: blur(20px);
+  will-change: transform; /* GPU compositor layer for smooth drawer slide */
+  touch-action: pan-y;   /* Allow vertical scrolling inside drawer on mobile */
 }
 .drawer.open {
   transform: translateX(0);

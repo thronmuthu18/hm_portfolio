@@ -19,7 +19,21 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Track scroll indicators initially
   updateScrollProgress();
+
+  // Register Service Worker for offline support (PWA)
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/service-worker.js')
+        .then((reg) => {
+          console.log('[PWA] Service Worker registered scope:', reg.scope);
+        })
+        .catch((err) => {
+          console.warn('[PWA] Service Worker registration failed:', err);
+        });
+    });
+  }
 });
+
 
 // Handle loading screen fadeout on full window load
 window.addEventListener('load', () => {
