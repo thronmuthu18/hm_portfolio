@@ -239,7 +239,7 @@ const adminController = {
     }
 
     try {
-      const decoded = jwt.verify(refreshToken, process.env.JWT_SECRET);
+      const decoded = jwt.verify(refreshToken, process.env.JWT_SECRET, { algorithms: ['HS256'] });
       const tokenHash = crypto.createHash('sha256').update(refreshToken).digest('hex');
 
       // Find active token in database

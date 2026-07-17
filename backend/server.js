@@ -59,7 +59,13 @@ app.use(helmet({
       styleSrc: ["'self'", "'unsafe-inline'", "https://fonts.googleapis.com"],
       fontSrc: ["'self'", "https://fonts.gstatic.com"],
       imgSrc: ["'self'", "data:", "blob:"],
-      connectSrc: ["'self'", "http://localhost:5000", "http://127.0.0.1:5000"]
+      connectSrc: [
+        "'self'", 
+        "http://localhost:5000", 
+        "http://127.0.0.1:5000",
+        "https://sudalaimuthu-portfolio.onrender.com",
+        "https://hm-portfolio-three.vercel.app"
+      ]
     }
   }
 }));

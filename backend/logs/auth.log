@@ -8,3 +8,16 @@
 [2026-07-17T11:11:33.257Z] [INFO] [AUTHFAILURE] Failed login attempt for: unauthorized from IP: ::1
 [2026-07-17T11:43:21.513Z] [INFO] [AUTHFAILURE] Failed login attempt for: unauthorized from IP: ::1
 [2026-07-17T13:22:46.149Z] [INFO] [AUTHFAILURE] Failed login attempt for: unauthorized from IP: ::1
+[2026-07-17T13:51:28.846Z] [INFO] [AUTHFAILURE] Failed login attempt for: unauthorized from IP: ::1
+[2026-07-17T13:52:18.699Z] [INFO] [AUTHFAILURE] Failed login attempt for: unauthorized from IP: ::1
+[2026-07-17T13:53:06.104Z] [INFO] [AUTHFAILURE] Failed login attempt for: unauthorized from IP: ::1
+[2026-07-17T13:53:37.640Z] [INFO] [AUTHFAILURE] Failed login attempt for: unauthorized from IP: ::1
+[2026-07-17T14:00:14.172Z] [INFO] [AUTHFAILURE] Failed login attempt for: sudalaimuthusudalai754@gmail.com from IP: ::1
+[2026-07-17T14:00:18.747Z] [INFO] [AUTHFAILURE] Failed login attempt for: sudalaimuthusudalai754@gmail.com from IP: ::1
+[2026-07-17T14:00:28.986Z] [INFO] [AUTHFAILURE] Failed login attempt for: sudalaimuthusudalai754@gmail.com from IP: ::1
+[2026-07-17T14:00:35.850Z] [INFO] [AUTHFAILURE] Failed login attempt for: sudalaimuthusudalai754@gmail.com from IP: ::1
+[2026-07-17T14:00:37.279Z] [INFO] [AUTHFAILURE] Failed login attempt for: sudalaimuthusudalai754@gmail.com from IP: ::1
+[2026-07-17T14:01:00.769Z] [INFO] [BRUTEFORCE] Blocked login attempt for: sudalaimuthusudalai754@gmail.com from IP: ::1. Locked for another 5 mins.
+[2026-07-17T14:01:03.943Z] [INFO] [BRUTEFORCE] Blocked login attempt for: sudalaimuthusudalai754@gmail.com from IP: ::1. Locked for another 5 mins.
+[2026-07-17T14:01:05.581Z] [INFO] [BRUTEFORCE] Blocked login attempt for: sudalaimuthusudalai754@gmail.com from IP: ::1. Locked for another 5 mins.
+[2026-07-17T14:05:18.404Z] [INFO] [AUTHFAILURE] Failed login attempt for: unauthorized from IP: ::1

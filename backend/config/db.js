@@ -21,6 +21,7 @@ const connectDB = async () => {
       autoIndex: process.env.NODE_ENV !== 'production', // Disable automatic indexing in production for performance
       serverSelectionTimeoutMS: 5000, // Timeout connection attempts after 5 seconds
       socketTimeoutMS: 45000, // Close sockets after 45 seconds of inactivity
+      maxPoolSize: 50, // Optimize database connection pooling capacity for concurrent requests load
     };
 
     console.log('Connecting to MongoDB Atlas...');

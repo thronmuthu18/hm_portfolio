@@ -20,7 +20,7 @@ const adminAuth = (req, res, next) => {
     }
 
     // Verify token validity
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const decoded = jwt.verify(token, process.env.JWT_SECRET, { algorithms: ['HS256'] });
 
     if (!decoded || decoded.role !== 'admin') {
       logger.security('AdminAuth', 'Forbidden: Decoded role is not administrator.');
