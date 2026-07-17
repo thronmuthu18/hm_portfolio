@@ -188,7 +188,7 @@ const adminController = {
       res.cookie('admin_refresh', refreshToken, {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
-        sameSite: 'strict',
+        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
         expires: sessionExpiry
       });
 
@@ -196,7 +196,7 @@ const adminController = {
       res.cookie('admin_token', token, {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
-        sameSite: 'strict',
+        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
         maxAge: 15 * 60 * 1000
       });
 
@@ -255,8 +255,16 @@ const adminController = {
         if (reuseSession) {
           // Breach occurred! Revoke entire session tree
           await AdminSession.deleteMany({ familyId: decoded.familyId });
-          res.clearCookie('admin_refresh');
-          res.clearCookie('admin_token');
+          res.clearCookie('admin_refresh', {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax'
+          });
+          res.clearCookie('admin_token', {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax'
+          });
           
           logger.auth('RTR_Breach', `Token reuse breach detected on IP: ${ip}. Invalidating familyId: ${decoded.familyId}`);
           return res.status(401).json({ success: false, message: 'Breach detected: Session terminated.' });
@@ -268,8 +276,16 @@ const adminController = {
       // Check if session has already rotated (safety fallback)
       if (activeSession.rotated) {
         await AdminSession.deleteMany({ familyId: activeSession.familyId });
-        res.clearCookie('admin_refresh');
-        res.clearCookie('admin_token');
+        res.clearCookie('admin_refresh', {
+          httpOnly: true,
+          secure: process.env.NODE_ENV === 'production',
+          sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax'
+        });
+        res.clearCookie('admin_token', {
+          httpOnly: true,
+          secure: process.env.NODE_ENV === 'production',
+          sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax'
+        });
         return res.status(401).json({ success: false, message: 'Breach detected: Token already rotated.' });
       }
 
@@ -310,14 +326,14 @@ const adminController = {
       res.cookie('admin_refresh', newRefreshToken, {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
-        sameSite: 'strict',
+        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
         expires: sessionExpiry
       });
 
       res.cookie('admin_token', newAccessToken, {
         httpOnly: true,
         secure: process.env.NODE_ENV === 'production',
-        sameSite: 'strict',
+        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
         maxAge: 15 * 60 * 1000
       });
 
@@ -342,8 +358,16 @@ const adminController = {
       await AdminSession.deleteOne({ tokenHash: hash });
     }
     
-    res.clearCookie('admin_refresh');
-    res.clearCookie('admin_token');
+    res.clearCookie('admin_refresh', {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax'
+    });
+    res.clearCookie('admin_token', {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax'
+    });
     
     if (req.admin) {
       await activityService.log(req.admin.username, 'LOGOUT', null, 'Admin logged out.', req);
@@ -358,8 +382,16 @@ const adminController = {
   logoutAll: async (req, res) => {
     try {
       await AdminSession.deleteMany({ adminUsername: req.admin.username });
-      res.clearCookie('admin_refresh');
-      res.clearCookie('admin_token');
+      res.clearCookie('admin_refresh', {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax'
+      });
+      res.clearCookie('admin_token', {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === 'production',
+        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax'
+      });
       
       await activityService.log(req.admin.username, 'LOGOUT_ALL', null, 'Logged out from all active sessions.', req);
       

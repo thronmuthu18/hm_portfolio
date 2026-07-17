@@ -54,7 +54,8 @@ const visitorService = {
         res.cookie('crm_visitor_uid', visitorUid, {
           httpOnly: true,
           expires: new Date(now.getTime() + 365 * 24 * 60 * 60 * 1000),
-          sameSite: 'lax'
+          secure: process.env.NODE_ENV === 'production',
+          sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax'
         });
 
         // Determine country (local mock fallback)
@@ -86,7 +87,11 @@ const visitorService = {
       // 2. Manage Session Cookie & Database Record
       if (!sessionUid) {
         sessionUid = crypto.randomUUID();
-        res.cookie('crm_session_uid', sessionUid, { httpOnly: true, sameSite: 'lax' });
+        res.cookie('crm_session_uid', sessionUid, {
+          httpOnly: true,
+          secure: process.env.NODE_ENV === 'production',
+          sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax'
+        });
 
         await CrmSession.create({
           sessionId: sessionUid,
