@@ -1,8 +1,8 @@
 {
   "name": "Sudalaimuthu A | Full Stack Web Developer & Freelancer",
-  "short_name": "Sudalai A Portfolio",
+  "short_name": "Sudalai Portfolio",
   "description": "Premium portfolio workspace and developer contact portal of Sudalaimuthu A",
-  "start_url": "/index.html",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#060911",
   "theme_color": "#060911",
@@ -13,6 +13,12 @@
       "src": "/favicon.ico",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
+    },
+    {
+      "src": "/public/images/profile/profile.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }

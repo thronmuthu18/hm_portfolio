@@ -1,20 +1,27 @@
-const CACHE_NAME = 'sudalai-portfolio-v1';
+const CACHE_NAME = 'sudalai-portfolio-v2';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
   '/css/style.css',
   '/js/main.js',
+  '/js/ai-assistant.js',
+  '/js/neural-network.js',
+  '/js/three-scene.js',
   '/robots.txt',
-  '/manifest.json',
-  '/favicon.ico'
+  '/manifest.json'
 ];
 
-// Install Event - Pre-cache assets
+// Install Event - Pre-cache core assets (non-blocking for optional assets)
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      console.log('[Service Worker] Pre-caching offline assets...');
-      return cache.addAll(ASSETS_TO_CACHE);
+      console.log('[Service Worker] Pre-caching core assets...');
+      // Use individual adds so one failure doesn't block the entire cache
+      return Promise.allSettled(
+        ASSETS_TO_CACHE.map(url => cache.add(url).catch(err => {
+          console.warn('[Service Worker] Could not cache:', url, err);
+        }))
+      );
     })
   );
   self.skipWaiting();
@@ -37,10 +44,15 @@ self.addEventListener('activate', (event) => {
   self.clients.claim();
 });
 
-// Fetch Event - Cache fallback with Network first strategy for dynamic files
+// Fetch Event - Network first, cache fallback strategy
 self.addEventListener('fetch', (event) => {
-  // Only handle GET requests and exclude Chrome extension or external API requests
+  // Only handle GET requests within same origin
   if (event.request.method !== 'GET' || !event.request.url.startsWith(self.location.origin)) {
+    return;
+  }
+
+  // Skip API requests - let them always go to network
+  if (event.request.url.includes('/api/')) {
     return;
   }
 
@@ -62,8 +74,8 @@ self.addEventListener('fetch', (event) => {
           if (cachedResponse) {
             return cachedResponse;
           }
-          // If fallback fails, return custom offline placeholder if page is requested
-          if (event.request.headers.get('accept').includes('text/html')) {
+          // If HTML page fails and not in cache, return index.html as fallback
+          if (event.request.headers.get('accept') && event.request.headers.get('accept').includes('text/html')) {
             return caches.match('/index.html');
           }
         });

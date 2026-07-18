@@ -2,14 +2,15 @@
 # Enforces search crawler visibility constraints
 
 User-agent: *
-Allow: /                     # Allow all search engines to index our homepage and sections
-Allow: /css/                 # Allow indexing of assets styling
-Allow: /js/                  # Allow indexing of scripts logic
-Allow: /assets/              # Allow indexing of images/icons
+Allow: /
+Allow: /css/
+Allow: /js/
+Allow: /public/
 
-# Disallow indexing of backend routes if hosted in the same codebase scope
-Disallow: /api/              # Block search crawlers from indexing API endpoints
-Disallow: /config/           # Block directory crawls
+# Disallow indexing of admin and backend routes
+Disallow: /admin/
+Disallow: /api/
+Disallow: /config/
 
 # Reference sitemap URL to assist search engines in discovering site architecture
 Sitemap: https://sudalaimuthu.dev/sitemap.xml
