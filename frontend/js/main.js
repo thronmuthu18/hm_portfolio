@@ -1,6 +1,6 @@
 /* ==========================================================================
    FRONTEND APPLICATION LOGIC WITH ELEVENTH-HOUR ANIMATIONS
-   Portfolio of Sudalaimuthu A - Full Stack Web Developer
+   Portfolio of Sudalaimuthu - Full Stack Web Developer
    ========================================================================== */
 
 const API_BASE_URL = (
