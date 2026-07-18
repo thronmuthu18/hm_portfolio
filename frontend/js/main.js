@@ -16,6 +16,10 @@ document.addEventListener('DOMContentLoaded', () => {
   initContactForm();
   initScrollReveal();
   initEventTracking();
+  initThemeToggle();
+  initCustomCursor();
+  initTelemetryHUD();
+
   
   // Track scroll indicators initially
   updateScrollProgress();
@@ -35,16 +39,39 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+
 // Handle loading screen fadeout on full window load
 window.addEventListener('load', () => {
   const loader = document.getElementById('loading-screen');
-  if (loader) {
-    loader.classList.add('fade-out');
-  }
+  const pctText = document.querySelector('.loader-percentage');
+  const bar = document.querySelector('.loader-bar');
   
-  // Make sure to check reveals on load (elements already in viewport)
-  triggerInitialReveal();
+  if (loader) {
+    let count = 0;
+    const interval = setInterval(() => {
+      count += Math.floor(Math.random() * 8) + 4;
+      if (count >= 100) {
+        count = 100;
+        clearInterval(interval);
+        
+        // Hide loader screen
+        loader.classList.add('fade-out');
+        document.body.classList.add('page-loaded');
+        
+        // Make sure to check reveals on load (elements already in viewport)
+        triggerInitialReveal();
+      }
+      
+      if (pctText) pctText.textContent = `${count}%`;
+      if (bar) bar.style.width = `${count}%`;
+    }, 40);
+  } else {
+    document.body.classList.add('page-loaded');
+    triggerInitialReveal();
+  }
 });
+
+
 
 // Scroll Event Listeners
 window.addEventListener('scroll', () => {
@@ -64,13 +91,12 @@ function initNavbar() {
   // Change navbar appearance on scroll
   window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
-      header.style.boxShadow = 'var(--shadow-md)';
-      header.style.background = 'hsla(var(--bg-base-dark) / 0.9)';
+      header.classList.add('scrolled');
     } else {
-      header.style.boxShadow = 'none';
-      header.style.background = 'hsla(var(--bg-base-dark) / 0.7)';
+      header.classList.remove('scrolled');
     }
   });
+
 
   // Toggle mobile navigation drawer
   if (toggleBtn && mobileNav) {
@@ -106,9 +132,21 @@ function updateScrollProgress() {
   const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
   if (totalHeight <= 0) return;
   
-  const progress = (window.scrollY / totalHeight) * 100;
+  const scrolled = window.scrollY;
+  const progress = (scrolled / totalHeight) * 100;
   scrollProgress.style.width = `${progress}%`;
+
+  // Layer 6: Scroll Parallax on ambient lighting glow wrappers
+  const wrapper1 = document.querySelector('.bg-parallax-wrapper-1');
+  const wrapper2 = document.querySelector('.bg-parallax-wrapper-2');
+  if (wrapper1) {
+    wrapper1.style.transform = `translate3d(0, ${scrolled * 0.12}px, 0)`;
+  }
+  if (wrapper2) {
+    wrapper2.style.transform = `translate3d(0, -${scrolled * 0.08}px, 0)`;
+  }
 }
+
 
 /**
  * Detect visible sections and update Nav Bar Links
@@ -447,3 +485,240 @@ function initEventTracking() {
     link.addEventListener('click', () => trackGAEvent('click_instagram_placeholder', 'social', 'Instagram Link'));
   });
 }
+
+/**
+ * Initialize Light/Dark Theme Switcher
+ */
+function initThemeToggle() {
+  const toggleBtn = document.getElementById('theme-toggle');
+  const toggleBtnMobile = document.getElementById('theme-toggle-mobile');
+
+  // Restore saved theme preference or fallback to system dark preference
+  const savedTheme = localStorage.getItem('portfolio_theme') || 'dark';
+  setTheme(savedTheme);
+
+  const handleToggle = () => {
+    const isLight = document.body.classList.contains('theme-light');
+    const newTheme = isLight ? 'dark' : 'light';
+    setTheme(newTheme);
+    localStorage.setItem('portfolio_theme', newTheme);
+  };
+
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', handleToggle);
+  }
+  if (toggleBtnMobile) {
+    toggleBtnMobile.addEventListener('click', handleToggle);
+  }
+}
+
+
+function setTheme(theme) {
+  if (theme === 'light') {
+    document.body.classList.add('theme-light');
+    document.body.classList.remove('theme-dark');
+  } else {
+    document.body.classList.add('theme-dark');
+    document.body.classList.remove('theme-light');
+  }
+}
+
+/**
+ * Initialize Desktop Custom Mouse Cursor Tracking & Magnetic Interactive Glow
+ */
+function initCustomCursor() {
+  const dot = document.querySelector('.custom-cursor-dot');
+  const glow = document.querySelector('.custom-cursor-glow');
+  const mouseGlow = document.querySelector('.bg-mouse-glow');
+
+  if (!dot || !glow) return;
+
+  // Add label node container inside custom cursor glow
+  let labelNode = glow.querySelector('.custom-cursor-label');
+  if (!labelNode) {
+    labelNode = document.createElement('span');
+    labelNode.className = 'custom-cursor-label';
+    glow.appendChild(labelNode);
+  }
+
+  // Track position using requestAnimationFrame to bypass layout thrashing
+  let targetX = 0, targetY = 0;
+  let currentDotX = 0, currentDotY = 0;
+  let currentGlowX = 0, currentGlowY = 0;
+
+  document.addEventListener('mousemove', (e) => {
+    targetX = e.clientX;
+    targetY = e.clientY;
+  });
+
+  function tick() {
+    currentDotX += (targetX - currentDotX) * 0.25;
+    currentDotY += (targetY - currentDotY) * 0.25;
+    currentGlowX += (targetX - currentGlowX) * 0.12;
+    currentGlowY += (targetY - currentGlowY) * 0.12;
+
+    dot.style.transform = `translate3d(${currentDotX}px, ${currentDotY}px, 0)`;
+    glow.style.transform = `translate3d(${currentGlowX - 20}px, ${currentGlowY - 20}px, 0)`;
+
+    if (mouseGlow) {
+      mouseGlow.style.transform = `translate3d(${currentGlowX - 225}px, ${currentGlowY - 225}px, 0)`;
+    }
+
+    requestAnimationFrame(tick);
+  }
+
+  requestAnimationFrame(tick);
+
+  // 1. Context-Sensitive Custom Cursor Label Hooks
+  const interactiveLinks = document.querySelectorAll('a, button, .btn');
+  const images = document.querySelectorAll('.project-visual, .about-image-wrapper img');
+  const projects = document.querySelectorAll('.project-card');
+  const textElements = document.querySelectorAll('.hero-content h1, .hero-content p, .about-content p, .section-header p');
+
+  interactiveLinks.forEach(target => {
+    target.addEventListener('mouseenter', () => {
+      dot.classList.add('hover-interactive');
+      glow.classList.add('hover-interactive');
+      labelNode.textContent = '';
+      if (target.getAttribute('href') && target.getAttribute('href').includes('github')) {
+        labelNode.textContent = 'GitHub';
+        glow.classList.add('has-label');
+      }
+    });
+    target.addEventListener('mouseleave', () => {
+      dot.classList.remove('hover-interactive');
+      glow.classList.remove('hover-interactive');
+      glow.classList.remove('has-label');
+      labelNode.textContent = '';
+    });
+  });
+
+  images.forEach(target => {
+    target.addEventListener('mouseenter', () => {
+      glow.classList.add('hover-explore');
+      labelNode.textContent = 'Explore';
+    });
+    target.addEventListener('mouseleave', () => {
+      glow.classList.remove('hover-explore');
+      labelNode.textContent = '';
+    });
+  });
+
+  projects.forEach(target => {
+    target.addEventListener('mouseenter', () => {
+      glow.classList.add('hover-project');
+      labelNode.textContent = 'View';
+    });
+    target.addEventListener('mouseleave', () => {
+      glow.classList.remove('hover-project');
+      labelNode.textContent = '';
+    });
+  });
+
+  textElements.forEach(target => {
+    target.addEventListener('mouseenter', () => {
+      dot.classList.add('hover-text');
+      glow.classList.add('hover-text');
+    });
+    target.addEventListener('mouseleave', () => {
+      dot.classList.remove('hover-text');
+      glow.classList.remove('hover-text');
+    });
+  });
+
+  // 2. Cursor Proximity Magnetic Engine (Max 8px translates)
+  const magneticElements = document.querySelectorAll('.btn, .social-icon, .theme-toggle-btn, .nav-link, .mobile-menu-btn');
+  
+  magneticElements.forEach(el => {
+    el.addEventListener('mousemove', (e) => {
+      const rect = el.getBoundingClientRect();
+      const elX = rect.left + rect.width / 2;
+      const elY = rect.top + rect.height / 2;
+      const dx = e.clientX - elX;
+      const dy = e.clientY - elY;
+      
+      // Calculate pull vector (max 8px translation)
+      const pullX = dx * 0.15;
+      const pullY = dy * 0.15;
+      
+      const boundedX = Math.max(-8, Math.min(8, pullX));
+      const boundedY = Math.max(-8, Math.min(8, pullY));
+      
+      el.style.transform = `translate3d(${boundedX}px, ${boundedY}px, 0)`;
+      el.style.transition = 'transform 0.1s ease';
+    });
+    
+    el.addEventListener('mouseleave', () => {
+      el.style.transform = 'translate3d(0, 0, 0)';
+      el.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
+    });
+  });
+
+  // 3. Hero Camera 3D Perspective Shift (Max 2.5 degrees) & Scanline follow
+  const heroSection = document.getElementById('hero');
+  const heroGrid = document.querySelector('.hero-grid');
+  const scanline = document.querySelector('.hero-scanline');
+
+  if (heroSection && heroGrid) {
+    heroSection.addEventListener('mousemove', (e) => {
+      const rect = heroSection.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      // Calculate tilt bounds (-0.5 to 0.5)
+      const relX = (x / rect.width) - 0.5;
+      const relY = (y / rect.height) - 0.5;
+      
+      const rx = relY * -5; // Max 2.5 degrees
+      const ry = relX * 5;  // Max 2.5 degrees
+      
+      heroGrid.style.transform = `perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg)`;
+      heroGrid.style.transition = 'transform 0.1s ease';
+
+      // Move vertical scanline Y position
+      if (scanline) {
+        scanline.style.transform = `translateY(${y}px)`;
+        scanline.style.opacity = 1;
+      }
+    });
+
+    heroSection.addEventListener('mouseleave', () => {
+      heroGrid.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+      heroGrid.style.transition = 'transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
+      
+      if (scanline) {
+        scanline.style.opacity = 0;
+      }
+    });
+  }
+}
+
+/**
+ * Live Dashboard OS Telemetry Updates (HUD Clock & Thread states)
+ */
+function initTelemetryHUD() {
+  const clockText = document.getElementById('telemetry-time');
+  const ramText = document.querySelector('.item-ram');
+
+  if (clockText) {
+    const updateTime = () => {
+      const d = new Date();
+      const hh = String(d.getHours()).padStart(2, '0');
+      const mm = String(d.getMinutes()).padStart(2, '0');
+      const ss = String(d.getSeconds()).padStart(2, '0');
+      clockText.textContent = `${hh}:${mm}:${ss}`;
+    };
+    updateTime();
+    setInterval(updateTime, 1000);
+  }
+
+  if (ramText) {
+    setInterval(() => {
+      const activePercent = (75 + Math.sin(Date.now() * 0.0001) * 3).toFixed(1);
+      ramText.textContent = `MEM: ${activePercent}%`;
+    }, 4000);
+  }
+}
+
+
+

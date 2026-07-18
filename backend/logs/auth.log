@@ -29,3 +29,16 @@
 [2026-07-17T15:00:57.729Z] [INFO] [AUTHFAILURE] Failed login attempt for: unauthorized from IP: ::1
 [2026-07-17T15:02:41.986Z] [INFO] [AUTHFAILURE] Failed login attempt for: unauthorized from IP: ::1
 [2026-07-17T15:24:23.906Z] [INFO] [AUTHFAILURE] Failed login attempt for: unauthorized from IP: ::1
+[2026-07-17T20:48:11.769Z] [INFO] [AUTHFAILURE] Failed login attempt for: unauthorized from IP: ::1
+[2026-07-17T20:56:58.551Z] [INFO] [BRUTEFORCE] Blocked login attempt for: unauthorized from IP: ::1. Locked for another 7 mins.
+[2026-07-17T21:00:16.757Z] [INFO] [AUTHFAILURE] Failed login attempt for: unauthorized from IP: ::1
+[2026-07-18T10:12:16.297Z] [INFO] [AUTHFAILURE] Failed login attempt for: unauthorized from IP: ::1
+[2026-07-18T10:13:08.137Z] [INFO] [AUTHFAILURE] Failed login attempt for: unauthorized from IP: ::1
+[2026-07-18T10:15:53.809Z] [INFO] [AUTHFAILURE] Failed login attempt for: unauthorized from IP: ::1
+[2026-07-18T10:17:32.036Z] [INFO] [AUTHFAILURE] Failed login attempt for: unauthorized from IP: ::1
+[2026-07-18T10:19:33.258Z] [INFO] [AUTHFAILURE] Failed login attempt for: unauthorized from IP: ::1
+[2026-07-18T10:21:45.789Z] [INFO] [AUTHFAILURE] Failed login attempt for: unauthorized from IP: ::1
+[2026-07-18T10:23:57.860Z] [INFO] [AUTHFAILURE] Failed login attempt for: unauthorized from IP: ::1
+[2026-07-18T10:25:26.527Z] [INFO] [AUTHFAILURE] Failed login attempt for: unauthorized from IP: ::1
+[2026-07-18T10:51:33.986Z] [INFO] [AUTHFAILURE] Failed login attempt for: unauthorized from IP: ::1
+[2026-07-18T11:09:44.013Z] [INFO] [AUTHFAILURE] Failed login attempt for: unauthorized from IP: ::1

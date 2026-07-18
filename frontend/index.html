@@ -51,6 +51,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
   
+  <!-- Devicons CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+  
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
   
@@ -69,7 +72,7 @@
       "image": "https://sudalaimuthu.dev/assets/images/photo.webp",
       "sameAs": [
         "https://github.com/thronmuthu18",
-        "https://www.linkedin.com/in/placeholder"
+        "https://www.linkedin.com/in/sudalaimuthu-a-73bb77218/"
       ]
     },
     {
@@ -100,40 +103,107 @@
   ]
   </script>
 </head>
-<body>
+<body class="theme-dark">
+
+  <!-- CUSTOM MOUSE CURSOR -->
+  <div class="custom-cursor-dot"></div>
+  <div class="custom-cursor-glow"></div>
 
   <!-- LOADING SCREEN -->
   <div id="loading-screen" class="loading-screen">
     <div class="loader-content">
-      <span class="logo">Sudalaimuthu A<span class="logo-dot"></span></span>
-      <div class="loader-bar-bg"><div class="loader-bar"></div></div>
+      <div class="ai-emblem loader-logo" style="width: 50px; height: 50px;">
+        <div class="emblem-ring" style="border-width: 2.5px;"></div>
+        <div class="emblem-symbol" style="font-size: 16px;">AI</div>
+        <div class="emblem-dot" style="width: 6px; height: 6px; transform-origin: 50% 28px;"></div>
+      </div>
+      <span class="logo" style="margin-top: 10px;">SUDALAIMUTHU A</span>
+      <div class="loader-bar-bg" style="margin-top: 15px;"><div class="loader-bar"></div></div>
+      <div class="loader-percentage" style="font-size: var(--fs-xs); font-family: var(--font-family-mono); color: var(--accent); margin-top: 5px; font-weight: bold;">0%</div>
     </div>
   </div>
+
 
   <!-- SCROLL PROGRESS INDICATOR -->
   <div id="scroll-progress" class="scroll-progress"></div>
 
-  <!-- Background Glow Accents -->
-  <div class="ambient-glow-1"></div>
-  <div class="ambient-glow-2"></div>
+  <!-- CINEMATIC FUTURISTIC ANIMATED BACKGROUND -->
+  <div class="animated-bg">
+    <!-- Aurora Light Engine Blobs -->
+    <div class="bg-aurora bg-aurora-1"></div>
+    <div class="bg-aurora bg-aurora-2"></div>
+
+    <div class="bg-parallax-wrapper-1" style="will-change: transform; position: absolute; inset: 0; pointer-events: none;">
+      <div class="bg-glow bg-glow-1"></div>
+    </div>
+    <div class="bg-parallax-wrapper-2" style="will-change: transform; position: absolute; inset: 0; pointer-events: none;">
+      <div class="bg-glow bg-glow-2"></div>
+    </div>
+    <div class="bg-glow bg-glow-3"></div>
+
+    <div class="bg-particle p1"></div>
+    <div class="bg-particle p2"></div>
+    <div class="bg-particle p3"></div>
+    <div class="bg-particle p4"></div>
+    <div class="bg-mouse-glow"></div>
+    <div class="ai-3d-scene" aria-hidden="true">
+      <div class="ai-orb" style="position: absolute; right: 8%; top: 25%; transform: translate(0, -50%);">
+        <div class="orb-core"></div>
+        <div class="orb-ring ring-x"></div>
+        <div class="orb-ring ring-y"></div>
+        <div class="orb-ring ring-z"></div>
+        <div class="orb-particle p1"></div>
+        <div class="orb-particle p2"></div>
+        <div class="orb-particle p3"></div>
+        <div class="orb-particle p4"></div>
+      </div>
+      <div class="scene-shadow"></div>
+    </div>
+  </div>
+
+
+
 
   <!-- RESPONSIVE NAVBAR -->
   <header class="navbar">
     <div class="container nav-container">
       <a href="#hero" class="logo" aria-label="Sudalaimuthu A Home">
+        <div class="ai-emblem">
+          <div class="emblem-ring"></div>
+          <div class="emblem-symbol">AI</div>
+          <div class="emblem-dot"></div>
+        </div>
         Sudalaimuthu A
-        <span class="logo-dot"></span>
       </a>
       
+      <!-- OS Telemetry HUD Bar -->
+      <div class="nav-telemetry">
+        <span class="telemetry-item item-clock"><span id="telemetry-time">00:00:00</span></span>
+        <span class="telemetry-item item-ram">MEM: STABLE</span>
+        <span class="telemetry-item item-net"><span class="hologram-dot" style="display:inline-block; margin-right:4px;"></span>SYS STABLE</span>
+      </div>
+
       <nav class="nav-links" aria-label="Desktop Navigation">
         <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#services">Services</a>
-        <a href="#why-choose-me">Why Me</a>
         <a href="#projects">Projects</a>
-        <a href="#resume">Resume</a>
-        <a href="#faq">FAQ</a>
         <a href="#contact">Contact</a>
+        <!-- Theme Toggle Switcher Button -->
+        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme" title="Toggle Theme">
+          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
         <a href="#contact" class="btn btn-primary" style="padding: var(--space-2) var(--space-6);">Hire Me</a>
       </nav>
 
@@ -148,21 +218,51 @@
   <!-- Mobile Drawer Menu -->
   <nav class="mobile-nav" id="mobile-nav-menu" aria-label="Mobile Navigation">
     <a href="#about" class="mobile-link">About</a>
-    <a href="#skills" class="mobile-link">Skills</a>
-    <a href="#services" class="mobile-link">Services</a>
-    <a href="#why-choose-me" class="mobile-link">Why Me</a>
     <a href="#projects" class="mobile-link">Projects</a>
-    <a href="#resume" class="mobile-link">Resume</a>
-    <a href="#faq" class="mobile-link">FAQ</a>
     <a href="#contact" class="mobile-link">Contact</a>
+    <!-- Theme Toggle Switcher Button Mobile -->
+    <button id="theme-toggle-mobile" class="theme-toggle-btn" aria-label="Toggle Theme" title="Toggle Theme" style="margin-top: 15px; margin-bottom: 15px;">
+      <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" y1="1" x2="12" y2="3"></line>
+        <line x1="12" y1="21" x2="12" y2="23"></line>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+        <line x1="1" y1="12" x2="3" y2="12"></line>
+        <line x1="21" y1="12" x2="23" y2="12"></line>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+      </svg>
+      <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+      </svg>
+    </button>
     <a href="#contact" class="btn btn-primary mobile-link">Hire Me</a>
+
   </nav>
 
   <main>
     
-    <!-- HERO SECTION -->
-    <section id="hero" class="hero">
-      <div class="container hero-grid">
+    <section id="hero" class="hero" style="position: relative;">
+      <!-- Interactive Neural Grid Backdrop -->
+      <canvas id="neural-network-canvas" style="position: absolute; inset: 0; z-index: 1; pointer-events: none; will-change: transform;"></canvas>
+      
+      <!-- Faint Laser Scanning Line -->
+      <div class="hero-scanline"></div>
+
+      <!-- Floating Holographic HUD Panels -->
+      <div class="hologram-panel panel-left glass-card" style="position: absolute; left: var(--space-6); bottom: var(--space-16); pointer-events: none; z-index: 3;">
+        <span class="hologram-dot"></span>
+        <span class="hologram-text">SYS ONLINE</span>
+      </div>
+      <div class="hologram-panel panel-right glass-card" style="position: absolute; right: var(--space-6); top: var(--space-28); pointer-events: none; z-index: 3;">
+        <span class="hologram-dot dot-pulse"></span>
+        <span class="hologram-text">MODEL ACTIVE</span>
+      </div>
+
+      <div class="container hero-grid" style="position: relative; z-index: 2;">
+
+
         <div class="hero-content reveal-fade-up">
           <div class="hero-badge">
             <span class="hero-badge-dot"></span>
@@ -174,10 +274,11 @@
             <a href="#contact" class="btn btn-primary">Hire Me</a>
             <a href="#projects" class="btn btn-secondary">View Projects</a>
           </div>
-          <div style="margin-top: var(--space-6); display: flex; gap: var(--space-4); align-items: center;">
-            <a href="#" class="btn btn-secondary" style="padding: var(--space-2) var(--space-4); font-size: var(--fs-xs);" id="hero-resume-btn">
+          <div class="hero-socials" style="margin-top: var(--space-6); display: flex; gap: var(--space-4); align-items: center;">
+
+            <a href="public/resume/resume.pdf" target="_blank" class="btn btn-secondary" style="padding: var(--space-2) var(--space-4); font-size: var(--fs-xs);" id="hero-resume-btn">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-              Resume (Placeholder)
+              View Resume
             </a>
             <a href="https://github.com/thronmuthu18" target="_blank" rel="noopener" class="btn btn-secondary" style="padding: var(--space-2) var(--space-4); font-size: var(--fs-xs);" aria-label="GitHub Profile">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
@@ -187,25 +288,14 @@
         </div>
         
         <div class="hero-visual reveal-fade-in">
+          <!-- 3D AI OBJECT EXPERIENCE -->
+          <!-- Spacing placeholder for background WebGL core alignments -->
+          <div class="ai-3d-scene-placeholder" style="height: 420px; width: 100%; display: flex; align-items: center; justify-content: center; position: relative;"></div>
           <div class="hero-card-glow"></div>
-          <div class="hero-mockup-card glass-card">
-            <div class="code-header">
-              <div class="code-dot"></div>
-              <div class="code-dot"></div>
-              <div class="code-dot"></div>
-            </div>
-            <p><span class="code-comment">// Technical Summary</span></p>
-            <p><span class="code-keyword">const</span> developer = {</p>
-            <p>&nbsp;&nbsp;name: <span class="code-string">"Sudalaimuthu A"</span>,</p>
-            <p>&nbsp;&nbsp;title: <span class="code-string">"Full Stack Web Developer"</span>,</p>
-            <p>&nbsp;&nbsp;stack: [<span class="code-string">"HTML5/CSS3/JS"</span>, <span class="code-string">"Node.js"</span>, <span class="code-string">"Express"</span>, <span class="code-string">"MongoDB"</span>],</p>
-            <p>&nbsp;&nbsp;standards: [<span class="code-string">"Clean Code"</span>, <span class="code-string">"SEO Optimized"</span>, <span class="code-string">"Secure Routes"</span>],</p>
-            <p>&nbsp;&nbsp;readyForHire: <span class="code-keyword">true</span></p>
-            <p>};</p>
-          </div>
         </div>
       </div>
     </section>
+
 
     <!-- ABOUT ME SECTION -->
     <section id="about" class="section-padding">
@@ -216,14 +306,12 @@
         </div>
         <div class="about-grid">
           <div class="about-visual reveal-fade-in">
-            <div class="about-photo-frame glass-card">
-              <div class="about-photo-placeholder">
-                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                  <circle cx="12" cy="7" r="4"></circle>
-                </svg>
-                <p style="font-size: var(--fs-xs); color: hsl(var(--text-muted));">Photo Placeholder</p>
-              </div>
+            <div class="about-photo-frame glass-card" style="border: 1px solid var(--glass-border);">
+              <picture style="width: 100%; height: 100%; display: block;">
+                <source srcset="public/images/profile/profile.webp" type="image/webp">
+                <source srcset="public/images/profile/profile.png" type="image/png">
+                <img src="public/images/profile/profile.jpg" alt="Sudalaimuthu A" class="about-photo-img" loading="lazy" width="280" height="280">
+              </picture>
             </div>
           </div>
           <div class="about-content reveal-fade-up">
@@ -255,80 +343,145 @@
           <h2>Technical Arsenal</h2>
           <p>Technologies, libraries, and utilities I leverage to build software</p>
         </div>
-        <div style="display: grid; grid-template-columns: 1fr; gap: var(--space-8);">
-          <div class="skills-grid">
-            
-            <!-- Frontend Category -->
-            <div class="skills-category glass-card reveal-fade-up">
-              <h3>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-                Frontend Architecture
-              </h3>
-              <div class="skill-list">
-                <div class="skill-item">
-                  <div class="skill-info">
-                    <span class="skill-name">HTML5 / CSS3</span>
-                    <span class="skill-percentage" data-val="95">0%</span>
-                  </div>
-                  <div class="skill-progress-bar">
-                    <div class="skill-progress" data-width="95" style="width: 0%;"></div>
-                  </div>
-                </div>
-                <div class="skill-item">
-                  <div class="skill-info">
-                    <span class="skill-name">JavaScript (Vanilla ES6+)</span>
-                    <span class="skill-percentage" data-val="90">0%</span>
-                  </div>
-                  <div class="skill-progress-bar">
-                    <div class="skill-progress" data-width="90" style="width: 0%;"></div>
-                  </div>
-                </div>
+        
+        <div class="arsenal-grid">
+          <!-- Frontend Category -->
+          <div class="arsenal-category glass-card reveal-fade-up">
+            <h3>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+              Frontend Architecture
+            </h3>
+            <div class="tech-grid">
+              <div class="tech-card" title="HTML5">
+                <i class="devicon-html5-plain colored"></i>
+                <span>HTML5</span>
+              </div>
+              <div class="tech-card" title="CSS3">
+                <i class="devicon-css3-plain colored"></i>
+                <span>CSS3</span>
+              </div>
+              <div class="tech-card" title="JavaScript">
+                <i class="devicon-javascript-plain colored"></i>
+                <span>JavaScript</span>
+              </div>
+              <div class="tech-card" title="TypeScript">
+                <i class="devicon-typescript-plain colored"></i>
+                <span>TypeScript</span>
+              </div>
+              <div class="tech-card" title="React">
+                <i class="devicon-react-original colored"></i>
+                <span>React</span>
+              </div>
+              <div class="tech-card" title="Next.js">
+                <i class="devicon-nextjs-plain colored"></i>
+                <span>Next.js</span>
               </div>
             </div>
-
-            <!-- Backend & Database Category -->
-            <div class="skills-category glass-card reveal-fade-up">
-              <h3>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
-                Backend & Database
-              </h3>
-              <div class="skill-list">
-                <div class="skill-item">
-                  <div class="skill-info">
-                    <span class="skill-name">Node.js / Express.js</span>
-                    <span class="skill-percentage" data-val="85">0%</span>
-                  </div>
-                  <div class="skill-progress-bar">
-                    <div class="skill-progress" data-width="85" style="width: 0%;"></div>
-                  </div>
-                </div>
-                <div class="skill-item">
-                  <div class="skill-info">
-                    <span class="skill-name">MongoDB Atlas (Mongoose)</span>
-                    <span class="skill-percentage" data-val="80">0%</span>
-                  </div>
-                  <div class="skill-progress-bar">
-                    <div class="skill-progress" data-width="80" style="width: 0%;"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
           </div>
 
-          <!-- Tools and Workflow Section -->
-          <div class="glass-card reveal-fade-up" style="padding: var(--space-6);">
-            <h3 style="font-size: var(--fs-md); font-weight: var(--font-weight-semibold); margin-bottom: var(--space-4); display: flex; align-items: center; gap: var(--space-3); border-bottom: 1px solid var(--glass-border); padding-bottom: var(--space-2);">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
-              Tools & Workflow
+          <!-- Backend Category -->
+          <div class="arsenal-category glass-card reveal-fade-up">
+            <h3>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+              Backend Services
             </h3>
-            <div style="display: flex; flex-wrap: wrap; gap: var(--space-3);">
-              <span class="project-tag" style="background: hsla(var(--color-primary) / 0.1); border-color: hsla(var(--color-primary) / 0.2); color: hsl(var(--text-primary));">Git</span>
-              <span class="project-tag" style="background: hsla(var(--color-primary) / 0.1); border-color: hsla(var(--color-primary) / 0.2); color: hsl(var(--text-primary));">GitHub</span>
-              <span class="project-tag" style="background: hsla(var(--color-primary) / 0.1); border-color: hsla(var(--color-primary) / 0.2); color: hsl(var(--text-primary));">VS Code</span>
-              <span class="project-tag" style="background: hsla(var(--color-primary) / 0.1); border-color: hsla(var(--color-primary) / 0.2); color: hsl(var(--text-primary));">Postman</span>
-              <span class="project-tag" style="background: hsla(var(--color-primary) / 0.1); border-color: hsla(var(--color-primary) / 0.2); color: hsl(var(--text-primary));">Netlify</span>
-              <span class="project-tag" style="background: hsla(var(--color-primary) / 0.1); border-color: hsla(var(--color-primary) / 0.2); color: hsl(var(--text-primary));">Render</span>
+            <div class="tech-grid">
+              <div class="tech-card" title="Node.js">
+                <i class="devicon-nodejs-plain colored"></i>
+                <span>Node.js</span>
+              </div>
+              <div class="tech-card" title="Express.js">
+                <i class="devicon-express-original colored"></i>
+                <span>Express.js</span>
+              </div>
+              <div class="tech-card" title="Python">
+                <i class="devicon-python-plain colored"></i>
+                <span>Python</span>
+              </div>
+              <div class="tech-card" title="PHP">
+                <i class="devicon-php-plain colored"></i>
+                <span>PHP</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Database Category -->
+          <div class="arsenal-category glass-card reveal-fade-up">
+            <h3>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+              Database & Environments
+            </h3>
+            <div class="tech-grid">
+              <div class="tech-card" title="MongoDB">
+                <i class="devicon-mongodb-plain colored"></i>
+                <span>MongoDB</span>
+              </div>
+              <div class="tech-card" title="SQL">
+                <i class="devicon-mysql-plain colored"></i>
+                <span>SQL</span>
+              </div>
+              <div class="tech-card" title="NoSQL">
+                <i class="devicon-couchdb-plain colored"></i>
+                <span>NoSQL</span>
+              </div>
+              <div class="tech-card" title="MySQL">
+                <i class="devicon-mysql-plain-wordmark colored"></i>
+                <span>MySQL</span>
+              </div>
+              <div class="tech-card" title="XAMPP">
+                <i class="devicon-apache-plain colored"></i>
+                <span>XAMPP</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tools Category -->
+          <div class="arsenal-category glass-card reveal-fade-up">
+            <h3>
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+              Development & Tools
+            </h3>
+            <div class="tech-grid">
+              <div class="tech-card" title="Git">
+                <i class="devicon-git-plain colored"></i>
+                <span>Git</span>
+              </div>
+              <div class="tech-card" title="GitHub">
+                <i class="devicon-github-original colored"></i>
+                <span>GitHub</span>
+              </div>
+              <div class="tech-card" title="VS Code">
+                <i class="devicon-vscode-plain colored"></i>
+                <span>VS Code</span>
+              </div>
+              <div class="tech-card" title="Postman">
+                <i class="devicon-postman-plain colored"></i>
+                <span>Postman</span>
+              </div>
+              <div class="tech-card" title="Vercel">
+                <i class="devicon-vercel-original colored"></i>
+                <span>Vercel</span>
+              </div>
+              <div class="tech-card" title="Render">
+                <i class="devicon-render-plain colored"></i>
+                <span>Render</span>
+              </div>
+              <div class="tech-card" title="Netlify">
+                <i class="devicon-netlify-plain colored"></i>
+                <span>Netlify</span>
+              </div>
+              <div class="tech-card" title="TiinyHost">
+                <i class="devicon-chrome-plain colored"></i>
+                <span>TiinyHost</span>
+              </div>
+              <div class="tech-card" title="npm">
+                <i class="devicon-npm-original-wordmark colored"></i>
+                <span>npm</span>
+              </div>
+              <div class="tech-card" title="Figma">
+                <i class="devicon-figma-plain colored"></i>
+                <span>Figma</span>
+              </div>
             </div>
           </div>
         </div>
@@ -435,54 +588,54 @@
           <h2>Why Choose Me</h2>
           <p>Delivering high-value, production-grade assets focused on your brand's growth</p>
         </div>
-        <div class="services-grid">
+        <div class="why-grid">
           
-          <div class="service-card glass-card glow-card-blue reveal-fade-up" style="padding: var(--space-6);">
-            <div class="service-icon-box" style="background: hsla(var(--color-primary) / 0.1); color: hsl(var(--color-primary));">
+          <div class="why-card glass-card glow-card-blue reveal-fade-up">
+            <div class="why-icon-box blue-icon">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
             </div>
-            <h4 style="font-size: var(--fs-md); font-weight: var(--font-weight-bold); margin-bottom: var(--space-2);">Modern & Responsive Design</h4>
-            <p style="font-size: var(--fs-sm); color: hsl(var(--text-secondary));">Mobile-first interface layout templates ensuring compatibility across mobile, tablet, and desktop screens.</p>
+            <h4>Modern & Responsive Design</h4>
+            <p>Mobile-first interface layout templates ensuring compatibility across mobile, tablet, and desktop screens.</p>
           </div>
 
-          <div class="service-card glass-card glow-card-purple reveal-fade-up" style="padding: var(--space-6);">
-            <div class="service-icon-box" style="background: hsla(var(--color-secondary) / 0.1); color: hsl(var(--color-secondary));">
+          <div class="why-card glass-card glow-card-purple reveal-fade-up">
+            <div class="why-icon-box purple-icon">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><code style="font-family: monospace; font-size: 16px; font-weight: bold;">&lt;/&gt;</code></svg>
             </div>
-            <h4 style="font-size: var(--fs-md); font-weight: var(--font-weight-bold); margin-bottom: var(--space-2);">Clean & Maintainable Code</h4>
-            <p style="font-size: var(--fs-sm); color: hsl(var(--text-secondary));">Strict adherence to structural modular conventions, keeping backend APIs and styling rules easy to read.</p>
+            <h4>Clean & Maintainable Code</h4>
+            <p>Strict adherence to structural modular conventions, keeping backend APIs and styling rules easy to read.</p>
           </div>
 
-          <div class="service-card glass-card glow-card-blue reveal-fade-up" style="padding: var(--space-6);">
-            <div class="service-icon-box" style="background: hsla(var(--color-primary) / 0.1); color: hsl(var(--color-primary));">
+          <div class="why-card glass-card glow-card-blue reveal-fade-up">
+            <div class="why-icon-box blue-icon">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
             </div>
-            <h4 style="font-size: var(--fs-md); font-weight: var(--font-weight-bold); margin-bottom: var(--space-2);">Performance Optimized</h4>
-            <p style="font-size: var(--fs-sm); color: hsl(var(--text-secondary));">Lightweight setups, minimal file footprints, and optimized asset requests targeting high Lighthouse ratings.</p>
+            <h4>Performance Optimized</h4>
+            <p>Lightweight setups, minimal file footprints, and optimized asset requests targeting high Lighthouse ratings.</p>
           </div>
 
-          <div class="service-card glass-card glow-card-purple reveal-fade-up" style="padding: var(--space-6);">
-            <div class="service-icon-box" style="background: hsla(var(--color-secondary) / 0.1); color: hsl(var(--color-secondary));">
+          <div class="why-card glass-card glow-card-purple reveal-fade-up">
+            <div class="why-icon-box purple-icon">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
             </div>
-            <h4 style="font-size: var(--fs-md); font-weight: var(--font-weight-bold); margin-bottom: var(--space-2);">Secure Development</h4>
-            <p style="font-size: var(--fs-sm); color: hsl(var(--text-secondary));">Input cleaning, XSS escaping, rate limits, and NoSQL injection blockades standard on all route entries.</p>
+            <h4>Secure Development</h4>
+            <p>Input cleaning, XSS escaping, rate limits, and NoSQL injection blockades standard on all route entries.</p>
           </div>
 
-          <div class="service-card glass-card glow-card-blue reveal-fade-up" style="padding: var(--space-6);">
-            <div class="service-icon-box" style="background: hsla(var(--color-primary) / 0.1); color: hsl(var(--color-primary));">
+          <div class="why-card glass-card glow-card-blue reveal-fade-up">
+            <div class="why-icon-box blue-icon">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
             </div>
-            <h4 style="font-size: var(--fs-md); font-weight: var(--font-weight-bold); margin-bottom: var(--space-2);">Clear Communication</h4>
-            <p style="font-size: var(--fs-sm); color: hsl(var(--text-secondary));">Timely updates, structured milestone checklists, and clear technical transparency at every stage.</p>
+            <h4>Clear Communication</h4>
+            <p>Timely updates, structured milestone checklists, and clear technical transparency at every stage.</p>
           </div>
 
-          <div class="service-card glass-card glow-card-purple reveal-fade-up" style="padding: var(--space-6);">
-            <div class="service-icon-box" style="background: hsla(var(--color-secondary) / 0.1); color: hsl(var(--color-secondary));">
+          <div class="why-card glass-card glow-card-purple reveal-fade-up">
+            <div class="why-icon-box purple-icon">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
             </div>
-            <h4 style="font-size: var(--fs-md); font-weight: var(--font-weight-bold); margin-bottom: var(--space-2);">Client-Focused Solutions</h4>
-            <p style="font-size: var(--fs-sm); color: hsl(var(--text-secondary));">Tailoring software functionality directly to address your target audience and user conversion requirements.</p>
+            <h4>Client-Focused Solutions</h4>
+            <p>Tailoring software functionality directly to address your target audience and user conversion requirements.</p>
           </div>
 
         </div>
@@ -495,7 +648,23 @@
         <div class="section-header">
           <h2>Featured Work</h2>
           <p>Real-world projects developed for freelancers and businesses</p>
+
+          <!-- Interactive Projects Explorer Search/Filter HUD -->
+          <div class="projects-explorer glass-card" style="margin-top: var(--space-6); display: flex; flex-direction: column; gap: var(--space-4); padding: var(--space-4); align-items: center; justify-content: center; position: relative; z-index: 2;">
+            <div class="explorer-search-wrapper" style="width: 100%; max-width: 400px; display: flex; align-items: center; background: rgba(var(--accent-rgb), 0.03); border: 1px solid var(--glass-border); padding: 0 var(--space-3); border-radius: var(--radius-full);">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--text-muted);"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+              <input type="text" id="project-search-input" placeholder="Search projects by name or technology..." style="width: 100%; border: none; outline: none; background: transparent; padding: var(--space-2) var(--space-3); font-size: var(--fs-xs); color: var(--text-primary);">
+            </div>
+            <div class="explorer-filters" style="display: flex; gap: var(--space-2); flex-wrap: wrap; justify-content: center;">
+              <button class="project-filter-btn active" data-filter="all">All</button>
+              <button class="project-filter-btn" data-filter="HTML5">HTML5</button>
+              <button class="project-filter-btn" data-filter="Vanilla JS">Vanilla JS</button>
+              <button class="project-filter-btn" data-filter="Node.js">Node.js</button>
+              <button class="project-filter-btn" data-filter="MongoDB">MongoDB</button>
+            </div>
+          </div>
         </div>
+
         <div class="projects-grid">
           
           <!-- Project 1 (CB Builders) -->
@@ -505,7 +674,8 @@
                 <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
                 <p style="font-size: var(--fs-xs); margin-top: var(--space-2);">CB Builders Showcase</p>
               </div>
-              <span class="project-tag" style="position: absolute; top: var(--space-3); right: var(--space-3); font-size: 10px; background: hsla(var(--color-primary) / 0.2); color: hsl(var(--color-accent)); border-color: hsla(var(--color-accent) / 0.3);">Active Business Web</span>
+              <span class="project-tag" style="position: absolute; top: var(--space-3); right: var(--space-3); font-size: 10px; background: rgba(var(--accent-rgb), 0.15); color: var(--accent); border-color: rgba(var(--accent-rgb), 0.3);">Active Business Web</span>
+
             </div>
             <div class="project-content">
               <div class="project-tags">
@@ -532,7 +702,8 @@
                 <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
                 <p style="font-size: var(--fs-xs); margin-top: var(--space-2);">E-Commerce Showcase</p>
               </div>
-              <span class="project-tag" style="position: absolute; top: var(--space-3); right: var(--space-3); font-size: 10px; background: hsla(var(--color-secondary) / 0.2); color: hsl(var(--color-secondary)); border-color: hsla(var(--color-secondary) / 0.3);">Coming Soon</span>
+              <span class="project-tag" style="position: absolute; top: var(--space-3); right: var(--space-3); font-size: 10px; background: rgba(var(--accent-rgb), 0.15); color: var(--accent); border-color: rgba(var(--accent-rgb), 0.3);">Coming Soon</span>
+
             </div>
             <div class="project-content">
               <div class="project-tags">
@@ -611,11 +782,11 @@
           <h3>Sudalaimuthu A — CV</h3>
           <p>Full Stack Web Developer | Specializing in Node.js, Express, MongoDB Atlas, and responsive frontends.</p>
           <div class="resume-btn-group">
-            <a href="#" class="btn btn-primary" id="download-cv-btn-secondary">
+            <a href="public/resume/resume.pdf" download="Sudalaimuthu_A_Resume.pdf" class="btn btn-primary" id="download-cv-btn-secondary">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
               Download Resume
             </a>
-            <a href="#" class="btn btn-secondary" id="view-cv-btn">
+            <a href="public/resume/resume.pdf" target="_blank" class="btn btn-secondary" id="view-cv-btn">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
               View Document
             </a>
@@ -801,11 +972,11 @@
           <a href="https://github.com/thronmuthu18" target="_blank" rel="noopener" aria-label="GitHub">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
           </a>
-          <a href="#" aria-label="LinkedIn">
+          <a href="https://www.linkedin.com/in/sudalaimuthu-a-73bb77218/" target="_blank" rel="noopener" aria-label="LinkedIn">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
           </a>
-          <a href="#" aria-label="Instagram">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          <a href="mailto:sudalaimuthusudalai754@gmail.com" aria-label="Email">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
           </a>
         </div>
       </div>
@@ -820,7 +991,86 @@
     </div>
   </footer>
 
-  <!-- Main JavaScript File -->
-  <script src="js/main.js"></script>
+  <!-- Noise filter and overlay for cinematic rendering -->
+  <svg style="display:none;" aria-hidden="true">
+    <filter id="noiseFilter">
+      <feTurbulence type="fractalNoise" baseFrequency="0.6" numOctaves="3" stitchTiles="stitch"/>
+      <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.035 0"/>
+    </filter>
+  </svg>
+  <!-- Conversational AI Assistant & Command Palette Modal Console -->
+  <div id="ai-console-modal" class="ai-console-modal">
+    <div class="ai-console-content glass-card">
+      <div class="ai-console-header">
+        <div class="console-title-group">
+          <div class="hologram-dot dot-pulse"></div>
+          <span class="console-title">AI OPERATING SYSTEM CONSOLE</span>
+        </div>
+        <button id="ai-console-close" class="console-close-btn" aria-label="Close Console">&times;</button>
+      </div>
+
+      <!-- Chat logs display -->
+      <div id="ai-chat-log" class="ai-chat-log"></div>
+
+      <!-- Command Palette shortcuts quicklinks -->
+      <div class="command-palette-container">
+        <h5 class="command-palette-title">QUICK SYSTEM COMMANDS</h5>
+        <div id="command-palette-list" class="command-palette-list">
+          <button class="command-item" data-action="#projects">
+            <span class="cmd-shortcut">JUMP</span> View Featured Projects
+          </button>
+          <button class="command-item" data-action="#skills">
+            <span class="cmd-shortcut">JUMP</span> Technical Arsenal Skills
+          </button>
+          <button class="command-item" data-action="#contact">
+            <span class="cmd-shortcut">JUMP</span> Open Communication Terminal
+          </button>
+          <button class="command-item" data-action="theme">
+            <span class="cmd-shortcut">EXEC</span> Toggle Day/Night Mode
+          </button>
+          <button class="command-item" data-action="https://github.com/thronmuthu18">
+            <span class="cmd-shortcut">LINK</span> Open GitHub Repositories
+          </button>
+          <button class="command-item" data-action="https://www.linkedin.com/in/sudalaimuthu-a-73bb77218/">
+            <span class="cmd-shortcut">LINK</span> Connect via LinkedIn Network
+          </button>
+        </div>
+      </div>
+
+      <!-- Input box HUD elements -->
+      <div class="ai-console-input-bar">
+        <button id="ai-voice-toggle" class="ai-voice-toggle-btn" title="Toggle AI Voice Response" aria-label="Toggle Voice Response">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+        </button>
+        <input type="text" id="ai-chat-input" placeholder="Ask AI guide / Ctrl+K Command Palette..." aria-label="AI Command Input">
+        <button id="ai-speech-mic" class="ai-speech-mic-btn" title="Voice Input" aria-label="Voice Input">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+        </button>
+        <button id="ai-chat-send" class="ai-chat-send-btn" aria-label="Send Message">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Welcome guidance Toast alert banner -->
+  <div id="welcome-toast" class="welcome-toast glass-card">
+    <span class="hologram-dot dot-pulse"></span>
+    <div class="toast-content">
+      <span class="toast-title">AI Guide Online</span>
+      <p class="toast-desc">Press Ctrl+K or click here to explore.</p>
+    </div>
+    <button id="close-welcome-toast" class="toast-close-btn" aria-label="Dismiss Alert">&times;</button>
+  </div>
+
+  <div class="noise-overlay"></div>
+
+  <!-- Library & Visual Scene modules -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+  <script src="js/neural-network.js" defer></script>
+  <script src="js/three-scene.js" defer></script>
+  <script src="js/ai-assistant.js" defer></script>
+  <script src="js/main.js" defer></script>
 </body>
 </html>
+
