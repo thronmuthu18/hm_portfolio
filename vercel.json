@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "builds": [
-    { "src": "frontend/**", "use": "@vercel/static" }
-  ],
-  "routes": [
-    { "src": "/admin/dashboard", "dest": "/frontend/admin/dashboard.html" },
-    { "src": "/admin",          "dest": "/frontend/admin/index.html" },
-    { "src": "/",              "dest": "/frontend/index.html" },
-    { "src": "/(.*)",          "dest": "/frontend/$1" }
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/frontend/$1"
+    },
+    {
+      "source": "/",
+      "destination": "/frontend/index.html"
+    }
   ]
 }
