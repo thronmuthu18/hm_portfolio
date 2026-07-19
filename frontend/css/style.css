@@ -1962,7 +1962,7 @@ body:not(.theme-light) .theme-toggle-btn:hover svg {
 
 /* Mobile responsive menu alignments */
 @media (max-width: 768px) {
-  .theme-toggle-btn {
+  #theme-toggle-mobile {
     position: fixed;
     top: 14px;
     right: 70px;

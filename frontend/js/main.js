@@ -493,8 +493,12 @@ function initThemeToggle() {
   const toggleBtn = document.getElementById('theme-toggle');
   const toggleBtnMobile = document.getElementById('theme-toggle-mobile');
 
-  // Restore saved theme preference or fallback to system dark preference
-  const savedTheme = localStorage.getItem('portfolio_theme') || 'dark';
+  // Restore saved theme preference or fallback to system preference (default to dark)
+  let savedTheme = localStorage.getItem('portfolio_theme');
+  if (!savedTheme) {
+    const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+    savedTheme = prefersLight ? 'light' : 'dark';
+  }
   setTheme(savedTheme);
 
   const handleToggle = () => {
