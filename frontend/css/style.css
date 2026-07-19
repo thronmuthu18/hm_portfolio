@@ -2707,3 +2707,9 @@ body.nav-open {
   }
 }
 
+/* Hide HUD hologram panels and CSS-based giant orb to clean up background clutter */
+.hologram-panel, .ai-orb, .scene-shadow {
+  display: none !important;
+}
+
+

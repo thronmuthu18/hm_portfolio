@@ -1,4 +1,4 @@
-const CACHE_NAME = 'sudalai-portfolio-v5';
+const CACHE_NAME = 'sudalai-portfolio-v6';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
