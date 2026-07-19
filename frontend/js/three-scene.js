@@ -11,6 +11,8 @@ function initThreeScene() {
   const container = document.querySelector('.ai-3d-scene');
   if (!container) return;
 
+  const isMobile = window.innerWidth < 768;
+
   // Accessibility Check: Disable WebGL updates if prefers-reduced-motion is active
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (prefersReducedMotion) {
@@ -61,7 +63,7 @@ function initThreeScene() {
   // 3. CONSTRUCT 3D CONSTELLATIONS & STRUCTURES
   // ─── Destination A: Hero Landing Zone (y = 0) ───
   const heroGroup = new THREE.Group();
-  heroGroup.position.set(2, 0, 0);
+  heroGroup.position.set(isMobile ? 0 : 2, 0, 0);
 
   const coreGeo = new THREE.SphereGeometry(0.7, 32, 32);
   const coreMat = createSyncMaterial({
@@ -87,7 +89,7 @@ function initThreeScene() {
 
   // ─── Destination B: About Knowledge Chamber (y = -3) ───
   const aboutGroup = new THREE.Group();
-  aboutGroup.position.set(-2.5, -3, 0);
+  aboutGroup.position.set(isMobile ? -0.5 : -2.5, -3, 0);
 
   const platformGeo = new THREE.BoxGeometry(2.0, 0.05, 2.0);
   const platformMat = createSyncMaterial({
@@ -107,7 +109,7 @@ function initThreeScene() {
 
   // ─── Destination C: Skills Technology Lab (y = -6) ───
   const skillsGroup = new THREE.Group();
-  skillsGroup.position.set(2.2, -6, 0);
+  skillsGroup.position.set(isMobile ? 0.5 : 2.2, -6, 0);
 
   // Constellation Graph Nodes
   const nodeCount = 6;
@@ -142,7 +144,7 @@ function initThreeScene() {
 
   // ─── Destination D: Projects Innovation Gallery (y = -9) ───
   const projectsGroup = new THREE.Group();
-  projectsGroup.position.set(-2, -9, 0);
+  projectsGroup.position.set(isMobile ? -0.4 : -2, -9, 0);
 
   const boxCount = 3;
   const boxes = [];
@@ -176,7 +178,7 @@ function initThreeScene() {
 
   // ─── Destination F: Contact Communication Hub (y = -15) ───
   const contactGroup = new THREE.Group();
-  contactGroup.position.set(1.5, -15, 0);
+  contactGroup.position.set(isMobile ? 0.3 : 1.5, -15, 0);
 
   const finalCore = new THREE.Mesh(new THREE.SphereGeometry(0.8, 32, 32), platformMat);
   contactGroup.add(finalCore);
@@ -231,16 +233,20 @@ function initThreeScene() {
     targetCameraY = -scrollProgress * 15;
 
     // Map sections camera sways (sways left/right as user scrolls past sections)
-    if (scrollProgress < 0.18) {
-      targetCameraX = scrollProgress * 1.5; // Sway right
-    } else if (scrollProgress < 0.38) {
-      targetCameraX = -1.8; // Sway left for About platform
-    } else if (scrollProgress < 0.58) {
-      targetCameraX = 1.6; // Sway right for Skills graph
-    } else if (scrollProgress < 0.78) {
-      targetCameraX = -1.5; // Sway left for Projects
+    if (isMobile) {
+      targetCameraX = 0; // Keep camera centered on mobile
     } else {
-      targetCameraX = 0.5; // Centering for Corridor & Contact
+      if (scrollProgress < 0.18) {
+        targetCameraX = scrollProgress * 1.5; // Sway right
+      } else if (scrollProgress < 0.38) {
+        targetCameraX = -1.8; // Sway left for About platform
+      } else if (scrollProgress < 0.58) {
+        targetCameraX = 1.6; // Sway right for Skills graph
+      } else if (scrollProgress < 0.78) {
+        targetCameraX = -1.5; // Sway left for Projects
+      } else {
+        targetCameraX = 0.5; // Centering for Corridor & Contact
+      }
     }
   });
 

@@ -504,6 +504,14 @@ section:not(.hero)::before {
   flex-wrap: wrap;
 }
 
+.hero-socials {
+  display: flex;
+  gap: var(--space-4);
+  align-items: center;
+  justify-content: center;
+  margin-top: var(--space-6);
+}
+
 .hero-visual {
   display: flex;
   justify-content: center;
@@ -1160,6 +1168,9 @@ textarea.form-control {
     text-align: left;
   }
   .hero-ctas {
+    justify-content: flex-start;
+  }
+  .hero-socials {
     justify-content: flex-start;
   }
   .about-grid {
@@ -2655,3 +2666,44 @@ body.page-loaded .hero-visual {
   border-color: hsla(var(--color-secondary-rgb) / 0.3) !important;
   box-shadow: 0 0 25px hsla(var(--color-secondary-rgb) / 0.2) !important;
 }
+
+/* ==========================================================================
+   33. PRODUCTION AUDIT RESPONSIVE MOBILE FIXES
+   ========================================================================== */
+
+/* Body scroll lock when mobile navigation is active */
+body.nav-open {
+  overflow: hidden !important;
+}
+
+/* Reduce container padding on narrow screen viewports to prevent squishing */
+@media (max-width: 576px) {
+  .container {
+    padding: 0 var(--space-4);
+  }
+}
+
+/* Avoid avatar sizing overflow on very narrow viewports */
+@media (max-width: 480px) {
+  .about-photo-frame {
+    width: 240px;
+    height: 240px;
+  }
+}
+
+/* Refactor resume preview card and buttons vertical stacking on mobile */
+@media (max-width: 576px) {
+  .resume-preview-box {
+    padding: var(--space-6) var(--space-4);
+  }
+  .resume-btn-group {
+    flex-direction: column;
+    width: 100%;
+    gap: var(--space-3);
+  }
+  .resume-btn-group .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+

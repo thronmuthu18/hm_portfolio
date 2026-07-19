@@ -1,4 +1,4 @@
-const CACHE_NAME = 'sudalai-portfolio-v4';
+const CACHE_NAME = 'sudalai-portfolio-v5';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',
@@ -51,8 +51,8 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Skip API requests - let them always go to network
-  if (event.request.url.includes('/api/')) {
+  // Skip API requests and resume downloads - let them always go to network without PWA caching
+  if (event.request.url.includes('/api/') || event.request.url.includes('/resume/')) {
     return;
   }
 
