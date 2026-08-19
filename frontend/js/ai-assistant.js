@@ -34,16 +34,16 @@ function initAiAssistant() {
     },
     projects: [
       {
-        name: "CB Builders",
-        type: "Active Business Web",
-        tags: ["HTML5", "CSS3", "Vanilla JS", "Netlify"],
-        desc: "A professional construction and interior design business website displaying detailed projects, service portfolios, and custom consultation workflows."
+        name: "The Champ AI",
+        type: "Active AI Platform",
+        tags: ["React", "TypeScript", "Node.js", "MongoDB", "Tailwind CSS", "JavaScript"],
+        desc: "A full-stack, multimodal AI chat platform featuring real-time streaming, voice conversation mode, image generation, document analysis, and usage quota limits."
       },
       {
-        name: "Full Stack Storefront",
-        type: "E-Commerce (Coming Soon)",
-        tags: ["Node.js", "Express", "MongoDB"],
-        desc: "A secure e-commerce application platform featuring shopping cart setups, inventory queries, and customer order logging models."
+        name: "CB Builders",
+        type: "Active Business Web",
+        tags: ["HTML", "CSS", "JavaScript", "Netlify"],
+        desc: "A professional construction and interior design business website displaying detailed projects, service portfolios, and custom consultation workflows."
       }
     ],
     contact: {
@@ -214,14 +214,14 @@ function initAiAssistant() {
   function generateLocalResponse(query) {
     if (query.includes('project') || query.includes('work') || query.includes('portfolio')) {
       if (query.includes('builders') || query.includes('cb')) {
-        return `Sudalaimuthu developed CB Builders, an active business website styled with HTML5, CSS3, and Vanilla JavaScript, hosted on Netlify. It includes detailed project portfolios and service catalog listings.`;
+        return `Sudalaimuthu developed CB Builders, an active business website styled with HTML, CSS, and JavaScript, hosted on Netlify. It includes detailed project portfolios and service catalog listings.`;
       }
-      if (query.includes('storefront') || query.includes('e-commerce') || query.includes('shop')) {
-        return `He built a secure Full Stack Storefront using Node.js, Express, and MongoDB, incorporating shopping inventory models and order tracking checkouts.`;
+      if (query.includes('champ') || query.includes('companion') || query.includes('voice') || query.includes('ai')) {
+        return `Sudalaimuthu developed The Champ AI, a full-stack multimodal AI chat platform with real-time streaming, voice conversation mode, OpenAI image generation/editing, Gemini document analysis, and usage quota limits. It is built using React, TypeScript, Node.js, Express, and MongoDB.`;
       }
       return `Sudalaimuthu's primary projects are:
-1. CB Builders (Active construction business web portfolio).
-2. Full Stack Storefront (Express/MongoDB shopping query model).
+1. The Champ AI (Multimodal voice assistant platform)
+2. CB Builders (Active construction business web portfolio)
 Ask me about either project to learn more!`;
     }
 
@@ -251,14 +251,14 @@ Ask me about either project to learn more!`;
 - Specialization: Full Stack Web Developer.
 - Core Stack: Node.js, Express, MongoDB Atlas, HTML5, CSS3, and Vanilla JavaScript.
 - Highlights: Optimised API payload sizes by 99.8% (to 2.5KB), enforced constant-time authorization algorithms, and constructed PWA service caching paths.
-- Active Works: CB Builders (business platform) and Full Stack Storefront.`;
+- Active Works: The Champ AI (AI platform) and CB Builders (business portfolio).`;
     }
 
     if (query.includes('who') || query.includes('about') || query.includes('sudalai')) {
       return `Sudalaimuthu A is a Full Stack Web Developer based in India, specializing in secure, high-performance web applications and database integrations.`;
     }
 
-    return `I recognized your query. I can answer questions about Sudalaimuthu's projects (e.g., CB Builders, Storefront), technical stack (Frontend, Backend, Database), education history, and direct contact details. What would you like to know?`;
+    return `I recognized your query. I can answer questions about Sudalaimuthu's projects (e.g., The Champ AI, CB Builders), technical stack (Frontend, Backend, Database), education history, and direct contact details. What would you like to know?`;
   }
 
   // 4. Voice Input (Speech Recognition) Mode
@@ -340,19 +340,28 @@ Ask me about either project to learn more!`;
     const activeFilterBtn = document.querySelector('.project-filter-btn.active');
     const filterVal = activeFilterBtn ? activeFilterBtn.getAttribute('data-filter') : 'all';
 
+    let visibleCount = 0;
+
     projectCards.forEach(card => {
-      const text = card.textContent.toLowerCase();
-      const matchesSearch = text.includes(query);
+      const title = card.querySelector('h3') ? card.querySelector('h3').textContent.toLowerCase() : '';
+      const description = card.querySelector('p') ? card.querySelector('p').textContent.toLowerCase() : '';
+      const tags = Array.from(card.querySelectorAll('.project-tags .project-tag')).map(t => t.textContent.toLowerCase());
       
-      const tags = Array.from(card.querySelectorAll('.project-tag')).map(t => t.textContent.toLowerCase());
-      const matchesFilter = filterVal === 'all' || tags.includes(filterVal.toLowerCase());
+      const matchesSearch = title.includes(query) || description.includes(query) || tags.some(tag => tag.includes(query));
+      const matchesFilter = filterVal.toLowerCase() === 'all' || tags.some(tag => tag.includes(filterVal.toLowerCase()));
 
       if (matchesSearch && matchesFilter) {
         card.style.display = 'flex';
+        visibleCount++;
       } else {
         card.style.display = 'none';
       }
     });
+
+    const noProjectsEl = document.getElementById('no-projects-el');
+    if (noProjectsEl) {
+      noProjectsEl.style.display = (visibleCount === 0) ? 'block' : 'none';
+    }
   }
 
   if (filterButtons) {
