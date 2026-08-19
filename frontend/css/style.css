@@ -844,6 +844,136 @@ body.theme-light .project-visual::after {
   align-items: center;
 }
 
+/* ── Project Showcase Image System ─────────────────────────────────── */
+
+/* When the visual area has a real image */
+.project-visual--has-image {
+  background-color: #080810; /* deep fallback while image loads */
+}
+
+/* The background image itself */
+.project-showcase-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  /* subtle scale transition on card hover */
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.45s ease;
+  will-change: transform;
+}
+
+/* Hover: very subtle scale on the image */
+.project-card:hover .project-showcase-img {
+  transform: scale(1.04);
+}
+
+/* Gradient overlay – sits between image and foreground */
+.project-visual-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity 0.4s ease;
+}
+
+/* Champ AI overlay: deep dark-to-crimson vignette */
+.project-visual-overlay--ai {
+  background:
+    linear-gradient(
+      160deg,
+      rgba(8, 0, 12, 0.62) 0%,
+      rgba(40, 0, 8, 0.48) 50%,
+      rgba(0, 0, 0, 0.72) 100%
+    );
+}
+
+/* CB Builders overlay: dark charcoal vignette */
+.project-visual-overlay--builders {
+  background:
+    linear-gradient(
+      160deg,
+      rgba(5, 5, 10, 0.58) 0%,
+      rgba(15, 5, 0, 0.45) 50%,
+      rgba(0, 0, 0, 0.70) 100%
+    );
+}
+
+/* Lighten overlay on hover so image shows through more */
+.project-card:hover .project-visual-overlay {
+  opacity: 0.82;
+}
+
+/* Light mode: slightly less dark overlays so image isn't buried */
+body.theme-light .project-visual-overlay--ai {
+  background:
+    linear-gradient(
+      160deg,
+      rgba(8, 0, 12, 0.45) 0%,
+      rgba(40, 0, 8, 0.30) 50%,
+      rgba(0, 0, 0, 0.55) 100%
+    );
+}
+body.theme-light .project-visual-overlay--builders {
+  background:
+    linear-gradient(
+      160deg,
+      rgba(5, 5, 10, 0.40) 0%,
+      rgba(15, 5, 0, 0.28) 50%,
+      rgba(0, 0, 0, 0.52) 100%
+    );
+}
+
+/* Foreground content (icon + label) sits above overlay */
+.project-visual-placeholder--over-image {
+  position: relative;
+  z-index: 2;
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+}
+
+.project-visual-placeholder--over-image svg {
+  color: rgba(255, 255, 255, 0.88);
+  filter: drop-shadow(0 2px 8px rgba(var(--accent-rgb), 0.45));
+}
+
+/* Status badge z-index above overlay */
+.project-status-badge {
+  z-index: 3 !important;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  background: rgba(0, 0, 0, 0.45) !important;
+  border: 1px solid rgba(var(--accent-rgb), 0.40) !important;
+  color: var(--accent) !important;
+  text-shadow: none;
+}
+
+body.theme-light .project-status-badge {
+  background: rgba(255, 255, 255, 0.18) !important;
+}
+
+/* Existing ::after gradient preserved but under our overlay when image present */
+.project-visual--has-image::after {
+  z-index: 0;
+}
+
+/* Mobile: ensure height is fluid, not clipped */
+@media (max-width: 480px) {
+  .project-visual {
+    height: 180px;
+  }
+}
+
+@media (max-width: 360px) {
+  .project-visual {
+    height: 160px;
+  }
+}
+
+
 
 
 .project-content {
